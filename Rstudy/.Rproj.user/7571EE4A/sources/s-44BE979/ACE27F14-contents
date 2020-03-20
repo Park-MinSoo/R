@@ -2,15 +2,14 @@
 v1 <- 1:10
 v2 <- v1 + 100
 print(v2)
-
 v1 <- c(4, 1, 8, 6, 10)
 print(v1)
-
-?rep
-rep(1, 100)
-rep(1:3, 5)
-rep(1:3, times=5)
-rep(1:3, each=5)
+v1 # v1 변수만 블러킹하여 확인해도 자동으로 print되어 나온다.
+?rep #help()랑 같다. document 보는 방법이다.
+rep(1, 100)#첫번째 주어진 아규먼트의 백터를 100번 반복해라~
+rep(1:3, 5)#1,2,3 이라는 백터를 5번 반복해라
+rep(1:3, times=5) # 키워드 파라미터
+rep(1:3, each=5)  # 각각을 5번씩 반복하면서 넘긴다.
 
 LETTERS
 letters
@@ -18,29 +17,33 @@ month.name
 month.abb
 pi
 
-LETTERS;letters;month.name;month.abb;pi
+LETTERS;letters;month.name;month.abb;pi 
+# 이런식으로 ; 을 델리미터로 사용하여 한줄에 쓸 수 도있다.
+LETTERS[1]; LETTERS[c(1)]; LETTERS[3:5]
 
-LETTERS[1]; LETTERS[3:5]
+#-를 붙이면'빼고'라는 뜻이다. 즉 여기선 A빼고/(B,D)빼고 다 나오게 된다.
 LETTERS[-1]; LETTERS[c(-2,-4)]
 
 length(LETTERS)
 length(month.name)
 length(pi)
-
+#length 함수는 갯수를 세어준다.
 
 x <- c(10,2,7,4,15)
 x
 print(x)
-class(x)
-rev(x)
-range(x)
-sort(x)
-sort(x, decreasing = TRUE)
+class(x) #타입을 알려준다.
+rev(x)  #역순으로 뒤집는다. 
+range(x) #범위-> 최솟값, 최댓값
+sort(x) #기본적으로 오름차순 sort를 해준다.
+sort(x, decreasing = TRUE)  # 내림차순 sort
 sort(x, decreasing = T)
 #x <- sort(x)
+
+
 order(x)
-
-
+#작은값 순으로 나열한 다음 그것이 원래 어떤 위치에 있었는지 표시한다.
+#데이터 분석할때 꼭 필요한 함수이다.
 
 x[3] <- 20
 x
