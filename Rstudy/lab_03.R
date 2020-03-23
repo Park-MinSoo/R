@@ -18,7 +18,7 @@ df2
 제품명 <- c("사과","딸기","수박")
 가격 <- c(1800,1500,3000)
 판매량 <- c(24,38,13)
-df3 <- data.frame(제품명,가격,판매량)
+df3 <- data.frame(제품명,가격,판매량,stringsAsFactors=F)
 rownames(df3) <- NULL
 df3
 
@@ -31,7 +31,7 @@ df3
 df4 <- data.frame(
   name = c("Potter", "Elsa", "Gates", "Wendy", "Ben"),
   gender = factor(c("M", "F", "M", "F", "M")),
-  math = c(85, 76, 99, 88, 40))
+  math = c(85, 76, 99, 88, 40) ,stringsAsFactors=F)
 df4
 
 df4$stat <- c(76, 73, 95, 82, 35)
@@ -40,6 +40,7 @@ df4$grade <-ifelse(df4$score >= 150,"A",
                    ifelse(df4$score >= 100,"B", 
                           ifelse(df4$score >=70,"C","D")))
 df4
+str(df4)
 
 #문제 7
 str(emp)
