@@ -42,6 +42,7 @@ mat1;mat2
 rownames(mat1) <- c("row1","row2","row3")
 colnames(mat1) <- c("col1","col2","col3")
 mat1
+
 ls()
 mean(x2)
 sum(x2)
@@ -52,13 +53,27 @@ summary(x2)
 mean(x2[2,])
 sum(x2[2,])
 rowSums(x2); colSums(x2)
+#행마다 합계, 열마다 합계
 
-apply(x2, 1, sum); apply(x2, 2, sum)  
+# apply 함수가 이를 대체 할 수 있다.(적용해라 이런 뜻)
+apply(x2, 1, sum); apply(x2, 2, sum)
+#여기서 1은 행단위, 2는 열단위로 수행하라는 말이다.
+
 ?apply
-apply(x2, 1, max)
-apply(x2, 1, min)
-apply(x2, 1, mean)
+apply(x2, 1, max) #x2 matrix의 행단위로의 최댓값
+apply(x2, 1, min) #x2 matrix의 행단위로의 최솟값
+apply(x2, 1, mean) #x2 matrix의 행단위로의 평균값
 
-apply(x2, 2, max)
-apply(x2, 2, min)
-apply(x2, 2, mean)
+apply(x2, 2, max) #x2 matrix의 열단위로의 최댓값
+apply(x2, 2, min) #x2 matrix의 열단위로의 최솟값
+apply(x2, 2, mean) #x2 matrix의 열단위로의 평균값
+
+#Array 실습
+a1 <- array(1:30, dim=c(2,3,5))
+#2행 3열 5층짜리 배열을 만들어라 (1부터 30까지)
+a1
+
+a1[1,3,4];a1[1,3,4, drop=F]
+a1[,,3]
+a1[,2,]
+a1[1,,]
