@@ -111,12 +111,13 @@ day1 <- factor(data1)
 day1
 class(day1)
 summary(day1)
-levels(day1)
+levels(day1) # 금과 일은 데이터에 없기때문에 빠져서 레벨이 나오게 된다.
 
 week.korabbname <- c("일", "월", "화",
                      "수", "목", "금", "토")
 day2 <- factor(data1, 
                levels=week.korabbname)
+#levels에 지정을 해주었다.
 day2
 summary(day2)
 levels(day2)
@@ -128,28 +129,32 @@ btype <- factor(
   levels=c("A", "B", "O"))
 btype
 summary(btype)
+#levels가 우선순위가 높기에 "AB"는 결측치인 Not Avaliable로 나타나게 된다.
 levels(btype)
 
 gender <- factor(c(1,2,1,1,1,2,1,2), 
                  levels=c(1,2), 
                  labels=c("남성", "여성"))
+#label은 매핑되는 순서대로 1="남성", 2="여성"으로 사용하게 된다.
 gender
 summary(gender)
 levels(gender)
 
 # 내장 데이터셋
 data()
-iris; head(iris);tail(iris) 
-View(iris)
-str(iris)
+iris; head(iris);tail(iris)
+View(iris) # 엑셀처럼 만들어서 보여주게 된다.
+str(iris) # 스트럭쳐라는 의미의 함수인 str은 모든 구조를 다 보여준다.
+#수행했을때 variables는 변수의 갯수를 알려주는 역할을 한다.
 
-
+library()
 #Dataframe 실습
 no <- c(1,2,3,4)
 name <- c('Apple','Banana','Peach','Berry')
 qty <- c(5,2,7,9)
 price <- c(500,200,200,500)
 fruit <- data.frame(no, name, qty, price)
+#name의 경우 캐릭터 벡터 이므로 자동으로 팩터로 인식하게 된다.
 str(fruit)
 View(fruit)
 
@@ -162,7 +167,7 @@ fruit[3,2]
 fruit[3,1]
 
 fruit[,3]
-fruit$qty
+fruit$qty # 얘가 가독성이 좋으므로 가급적 이걸 쓰자.
 fruit[[3]]
 fruit[3]  # 데이터프레임 형식 유지
 
