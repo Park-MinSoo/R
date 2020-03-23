@@ -247,48 +247,50 @@ v <- c(10,3,7,4,8)
 sort(v)
 order(v)
 
-emp <- read.csv(file.choose(),
-                stringsAsFactors = F)
+emp <- read.csv(file.choose(),stringsAsFactors = F)
 emp
 str(emp)
 
 # emp에서 직원 이름
 emp$ename
 emp[,2]
-emp[,"ename"] 
+emp[,"ename"]
 emp[,2, drop=FALSE] 
 emp[,"ename",drop=F] 
-emp[2]
-emp["ename"] 
+emp[2]  #데이타프레임 구조이다.
+emp["ename"] #데이타프레임 구조이다.
 
 # emp에서 직원이름, 잡, 샐러리
 emp[,c(2,3,6)]
 emp[,c("ename","job","sal")]
 subset(emp,select = c(ename, job, sal))
 ?subset
+
 # emp에서 1,2,3 행 들만
 emp[1:3,]
 emp[c(1,2,3),]
+?head
+head(emp)
+head(emp, n=1)
 
 # ename이 "KING"인 직원의 모든 정보
 emp[9,] 
 emp$ename=="KING"
 emp[c(F,F,F,F,F,F,F,F,T,F,F,F,
       F,F,F,F,F,F,F,F),]
-emp[emp$ename=="KING",]
+emp[emp$ename=="KING",] #sql에서 where절 같은 느낌이다.
 subset(emp,subset=emp$ename=="KING")
 subset(emp,emp$ename=="KING") 
 
-emp[emp$ename=="KING",] 
-
 # 커미션을 받는 직원들의 모든 정보 출력
-emp[!is.na(emp$comm),]
+emp[!is.na(emp$comm),]  #na값은 등가연산으로 비교할수 없으므로, is.na를 수행하여 비교한다.
 subset(emp,!is.na(emp$comm)) 
+View(emp)
 
 # select ename,sal from emp where sal>=2000
-subset(emp, select=c("ename","sal"), 
+subset(emp, select=c("ename","sal"), #select에 추출하고자 하는 열
        subset= emp$sal>= 2000)
-subset(emp, emp$sal>= 2000, 
+subset(emp, emp$sal>= 2000,
        c("ename","sal"))
 emp[emp$sal>=2000,c("ename","sal")]
 
