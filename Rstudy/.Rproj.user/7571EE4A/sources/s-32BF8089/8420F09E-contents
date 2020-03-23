@@ -184,7 +184,7 @@ df_midterm
 str(df_midterm)
 colnames(df_midterm)
 rownames(df_midterm)
-names(df_midterm)
+names(df_midterm) # 얘는 colnames랑 동일하다.
 mean(df_midterm$english)
 mean(df_midterm$math)
 
@@ -197,26 +197,29 @@ rownames(df_midterm2)
 names(df_midterm2)
 df_midterm2
 df_midterm2 <- data.frame(
-  영어=c(90, 80, 60, 70), 
+  영어=c(90, 80, 60, 70), # 컬럼명이 이상하게 되는 것을 막기 위해 이런식으로 컬럼명을 지정하면서 생성 가능하다.
   수학=c(50, 60, 100, 20), 
   클래스=c(1,1,2,2))
 df_midterm2
 df_midterm2$영어
 
 df <- data.frame(var1=c(4,3,8), 
-                 var2=c(2,6)) # 오류
+                 var2=c(2,6)) # 오류, 갯수가 안맞아서 에러가난다.
 df <- data.frame(var1=c(4,3,8), 
                  var2=c(2,6,1))
 str(df)
-df$var_sum <- df$var1 + df$var2
+df$var_sum <- df$var1 + df$var2 # 이런식으로 df에 새로운 변수를 행단위로 추가해 넣어줄 수 있다.
 df$var_mean <- df$var_sum/2
 df$result <- ifelse(df$var1>df$var2, 
                     "var1이 크다", "var1이 작다")
+#ifelse는 3항연산자와 기능이 똑같다.
+#ifelse(조건, 조건이 참일 때 처리할 명령문1, 조건이 거짓일 때 처리할 명령문2)
 
 getwd() # setwd('xxx')
 
 #csv파일열기
 score <- read.csv("data/score.csv")
+#csv를 읽을때는 read.csv를 사용한다.
 score
 str(score)
 score$sum <- 
@@ -225,10 +228,10 @@ score$result <- ifelse(score$sum >= 200,
                        "pass", "fail")
 score
 
-summary(score$result)
+summary(score$result) #팩터가 아니여서 그냥 전체 갯수만 세어버린다.
 table(score$result)
-summary(factor(score$result))
-score$result = factor(score$result) 
+summary(factor(score$result)) #따라서 팩터로 만든 다음에 summary해야한다.
+score$result = factor(score$result) # 언제부턴가 '<-' 말고 '='도 지원한다.
 str(score)
 summary(score)
 score$id = as.character(score$id)
