@@ -12,6 +12,8 @@ l[[1]] #따라서 l[[1]]*3 은 정상동작 하게된다.
 lds <- list(1,2,3) 
 lds
 lds+100
+unlist(lds)
+unlist(lds) + 100
 lds[1]
 lds[1]+10
 lds[[1]]+10
@@ -19,7 +21,7 @@ lds[[1]]+10
 names(lds) <- LETTERS[1:3]
 lds
 lds[[2]]
-lds[["B"]]
+lds[["B"]] #숫자 대신 문자 index를 줄 수도 있다.
 lds$B
 
 
