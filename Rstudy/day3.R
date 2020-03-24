@@ -50,6 +50,7 @@ names(new_a) <- NULL
 ls()
 length(ls())
 save(list=ls(),file="all.rda") # varience will save in "all.rda" of rexam
+#rda = 객체 상태 그대로를 이미지로 저장하는 것이다.
 rm(list=ls())
 ls()
 load("all.rda")
@@ -58,12 +59,20 @@ ls()
 #read file data
 nums <- scan("data/sample_num.txt")
 word_ansi <- scan("data/sample_ansi.txt",what="")
+#what이라는 매개변수에 null 문자열을 주어 캐릭터 벡터로 읽어올 수 있다.
 words_utf8 <- scan("data/sample_utf8.txt", what="",encoding="UTF-8")
 words_utf8_new <- scan("data/sample_utf8.txt", what="")
+#scan은 숫자를 읽어 들이는것에 특화가 되어있다.
+
+#readLines는 행단위(가로)로 데이터를 읽어오게 된다.
 lines_ansi <- readLines("data/sample_ansi.txt")
 lines_utf8 <- readLines("data/sample_utf8.txt",encoding="UTF-8")
+#UTF-8의 경우 그냥 읽으면 제대로 안읽혀오고 한글이 깨지게 된다.
+#R은 UTF-8을 쓸 때 반드시 대문자로 줘야한다.
 
 df2 <- read.table("data/product_click.log")
+#read.table은 seperate를 원하는것으로 마음대로 구분할수 있다. default는 공백
+#read.table은 제목행이 없는 처리하는것이 기본이다.(자동으로 v1, v2가 붙음)
 str(df2)
 head(df2)
 summary(df2$V2)

@@ -3,7 +3,7 @@ L1<-list(
   name = "scott",
   sal = 3000
 )
-result <- L1[[2]]*2
+result1 <- L1[[2]]*2
 
 
 #문제 2
@@ -30,7 +30,6 @@ avg <- sum(unlist(L5))/6
 avg
 
 #문제 6
-var <- ""
 time <- 32150
 hour <- 32150 %/% 3600 #8시간
 min <- (32150 %% 3600) %/% 60 # 55분
