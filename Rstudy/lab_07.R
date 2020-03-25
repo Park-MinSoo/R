@@ -83,12 +83,12 @@ mySum <-function(num){
   )
   if(is.null(num)){
     return()
-  }
-  else if(!is.vector(num)){
+  }else{
+   if(!is.vector(num)){
     stop("벡터만 처리 가능!!")
     return()
   }
-  else if(is.vector(num)){
+  else{
     cnt <- 0
     for (data in num){
       if(is.na(data)){
@@ -105,8 +105,9 @@ mySum <-function(num){
     }
     return(result)
   }
+  }
 }
-mySum()
+mySum(NULL)
 mySum(array(1,2))
 mySum(c(1))
 mySum(c(1,2,3))
@@ -115,9 +116,56 @@ mySum(c(1,5,NA))
 mySum(c(1,5,9,10))    # 짝=15 / 홀 = 10
 mySum(c(1,5,9,10,20))  # 짝=15 / 홀=30
 
-#
+#문제 5
+myExpr <-function(func){
+  
+    if(!is.function(func)){
+      stop("수행 안할꺼임!!")
+      return()
+    }
+    else{
+      result <- sample(1:45,6)
+      return(result)
+  }
+}
+myExpr(func1)
 
+#문제 6
+createVector1 <-function(num, p, bool){
+  
+  if(all(is.null(num) & is.null(p) & is.null(bool))){
+    return()
+  }
+  else if(any(is.na(num) | is.na(p) | is.na(bool) )){
+    result <- c(NA)
+    return(result)
+  }
+  else
+    result <- c(num, p, bool)
+    return(result)
+}
+createVector1(1,"가",T)
+createVector1(1,"가",NA)
+createVector1(NULL,NULL,NULL)
 
-
-
-
+#문제 7
+createVector2 <- function(num, p, bool){
+  
+  if(all(is.null(num) & is.null(p) & is.null(bool))){
+    return()
+  }
+  else{
+    result <- list(
+      num = c(0),
+      p = c(""),
+      bool = c()
+    )
+    result$num <- result$num + num
+    result$p <- paste(result$p, p)
+    result$bool <- paste(result$bool, bool)
+  }
+  return(result)
+}
+createVector2(1,"가",T)
+createVector2(1,"가",NA)
+createVector2(NULL,NULL,NULL)
