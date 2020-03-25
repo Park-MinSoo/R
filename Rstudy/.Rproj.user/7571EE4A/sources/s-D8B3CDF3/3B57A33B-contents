@@ -89,6 +89,7 @@ exam5 <- function(num1,p="#"){
      cat(p)          
     i <- i +1
     }
+  return()
 }
 exam5(7,"+")
 exam5(5)
@@ -112,6 +113,7 @@ exam6 <- function(point){
    print(result)
    }
   }
+  return()
 }
 exam6(c(80, 50, 70, 66, NA, 35))
 
