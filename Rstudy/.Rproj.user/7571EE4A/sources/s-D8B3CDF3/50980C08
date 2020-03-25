@@ -7,11 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "50980C08",
-    "lastKnownWriteTime" : 1585109282,
-    "last_content_update" : 1585109282119,
+    "lastKnownWriteTime" : 1585121276,
+    "last_content_update" : 1585121276760,
     "path" : "C:/hardy/Rstudy/test1.R",
     "project_path" : "test1.R",
     "properties" : {
+        "cursorPosition" : "7,0",
+        "scrollLine" : "0",
         "tempName" : "Untitled1"
     },
     "read_only" : false,
