@@ -131,14 +131,14 @@ testAll <-function(p){
       print(testError1(2))
       print(testWarn(3))
     }
-  },warning = function(w){
+  },warning = function(w){ #warning 값으로 function을 주고있다.
     print(w)
     cat("-.-;;\n")
-  }, error = function(e){
+  }, error = function(e){  #error 값으로function을 주고있다.
     print(e)
     cat("ㅠㅠ \n")
   },finally ={
-    cat("오류, 경고 발생 여부를 따라서 반드시 수행되는 부분입니다요..\n")
+    cat("오류, 경고 발생 여부에 관계없이 반드시 수행되는 부분입니다요..\n")
   })
 }
 
@@ -158,10 +158,10 @@ f.case1(NA)
 f.case1(1:6)
 f.case1(c(10,20,30))
 f.case1(c(NA, 20))
-f.case1(c(10, NA, 20))
+f.case1(c(10, NA, 20)) #첫번째 원소만 가지고 일을 했기에 제대로 안나오게 된다.
 
 f.case2 <- function(x) {
-  if(any(is.na(x))) 
+  if(any(is.na(x))) #any는 하나라도 (NA)이면 참을 수행해 준다.
     return("NA가 있슈")
   else
     return("NA가 없슈")
@@ -174,7 +174,7 @@ f.case2(c(NA, 20))
 f.case2(c(10, NA, 20))
 
 f.case3 <- function(x) {
-  if(all(is.na(x))) 
+  if(all(is.na(x))) #all은 전부가 (NA)이면 참을 수행해 준다.
     return("모두 NA임")
   else
     return("모두 NA인 것은 아님")
@@ -191,23 +191,25 @@ testSleep <- function(x) {
   for(data in 6:10) {       
     cat(data,"\n")
     if(x)
-      Sys.sleep(1)
+      Sys.sleep(1) # 초단위로 지정한다.
+    #프로그램이 잠시 쉬게 해준다. 브라우저가 랜더링하는 시간을 기다려줌.
   }
   return()
 }
 testSleep(FALSE)
 testSleep(TRUE)
 
-
-
-
 # 가변형 인자 테스트
 funcArgs <- function(...) {
   p <- c(...)
   data <- 1:10
-  opts <- ifelse(length(p), p, "")
-  print(p)
-  print(opts)
+# opts <- ifelse(length(p), p, "") # 맞으면 p 아니면 널문자열
+  if(length(p) >0)
+    opts <- p
+  else
+    opts <- ""
+#  print(p)
+#  print(opts)
   if(opts[1] == "")
     print(data)
   else 
@@ -222,3 +224,6 @@ funcArgs <- function(...) {
       )
     }
 }
+funcArgs()
+funcArgs("SUM","mean","Min")
+
