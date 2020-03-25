@@ -1,0 +1,7 @@
+#문제 9
+testdata2 <- scan("data/iotest2.txt", what="",encoding="UTF-8")
+freq <- table(testdata2)
+which.max(freq)
+names(which.max(freq))
+cat("가장 많이 등장한 단어는",names(which.max(freq)),"입니다.","\n")
+
