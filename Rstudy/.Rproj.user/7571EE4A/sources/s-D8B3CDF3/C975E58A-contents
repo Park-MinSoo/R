@@ -28,11 +28,11 @@ countEvenOdd(c(2,4,"가",8))
 
 #문제 2
 vmSum<-function(num){
-  if(is.vector(num) & !is.numeric(num)){
+  if(is.vector(num) && !is.numeric(num)){
     print("숫자 벡터를 전달하숑!")
     return(0)
   }
-  else if(is.vector(num) & is.numeric(num)){
+  else if(is.vector(num) && is.numeric(num)){
     result <- 0
     for(data in num){
        result <- result + data
@@ -92,7 +92,7 @@ mySum <-function(num){
     cnt <- 0
     for (data in num){
       if(is.na(data)){
-        warning("NA를 최저값으로 변경하여 처리함")
+        warning("NA를 최저값으로 변경하여 처리함") #replace 쓸 수 있다.
         data <- min(!is.na(num))
       }
       cnt <- cnt + 1
@@ -125,23 +125,23 @@ myExpr <-function(func){
     }
     else{
       result <- sample(1:45,6)
-      return(result)
+      return(func(result))
   }
 }
-myExpr(func1)
+myExpr(mean)
 
 #문제 6
-createVector1 <-function(num, p, bool){
-  
-  if(all(is.null(num) & is.null(p) & is.null(bool))){
-    return()
+createVector1 <-function(...){
+  data <- c(...)
+  result <- NULL
+  if(length(data)==0){
+    result <- NULL
   }
-  else if(any(is.na(num) | is.na(p) | is.na(bool) )){
-    result <- c(NA)
-    return(result)
+  else if(any(is.na(data))){
+    result <- NA
   }
   else
-    result <- c(num, p, bool)
+    result <- data
     return(result)
 }
 createVector1(1,"가",T)
@@ -149,23 +149,22 @@ createVector1(1,"가",NA)
 createVector1(NULL,NULL,NULL)
 
 #문제 7
-createVector2 <- function(num, p, bool){
-  
-  if(all(is.null(num) & is.null(p) & is.null(bool))){
-    return()
+createVector2 <- function(...){
+  args <- list(...)
+  nvec <- NULL
+  cvec <- NULL
+  lvec <- NULL
+  for (data in args){
+  if(is.numeric(data)){
+    nvec <- c(nvec,data)
+  }else if(is.character(data)){
+    cvec <- c(cvec,data)
+  }else if(is.logical(data)){
+    lvec <- c(lvec,data)
   }
-  else{
-    result <- list(
-      num = c(0),
-      p = c(""),
-      bool = c()
-    )
-    result$num <- result$num + num
-    result$p <- paste(result$p, p)
-    result$bool <- paste(result$bool, bool)
-  }
-  return(result)
 }
-createVector2(1,"가",T)
+  return(list(nvec,cvec,lvec))
+}
+createVector2(1,"가",T, 2, 10, "나")
 createVector2(1,"가",NA)
 createVector2(NULL,NULL,NULL)
