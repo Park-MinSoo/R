@@ -1,25 +1,23 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1585097275342.000,
+    "created" : 1585109273940.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "0",
-    "id" : "4DF3F66C",
-    "lastKnownWriteTime" : 1585109341,
-    "last_content_update" : 1585109341880,
-    "path" : "C:/hardy/Rstudy/day4.R",
-    "project_path" : "day4.R",
+    "id" : "50980C08",
+    "lastKnownWriteTime" : 1585109282,
+    "last_content_update" : 1585109282119,
+    "path" : "C:/hardy/Rstudy/test1.R",
+    "project_path" : "test1.R",
     "properties" : {
-        "cursorPosition" : "164,20",
-        "scrollLine" : "154",
         "tempName" : "Untitled1"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 2,
+    "relative_order" : 4,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

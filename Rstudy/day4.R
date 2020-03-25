@@ -226,4 +226,3 @@ funcArgs <- function(...) {
 }
 funcArgs()
 funcArgs("SUM","mean","Min")
-
