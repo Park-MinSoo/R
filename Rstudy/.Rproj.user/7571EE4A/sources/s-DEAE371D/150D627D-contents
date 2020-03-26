@@ -48,18 +48,22 @@ text<- NULL
 url<- "http://movie.naver.com/movie/point/af/list.nhn?page=1"
 text <- read_html(url,  encoding="CP949")
 text
+
 # 영화제목
 nodes <- html_nodes(text, ".movie")
 title <- html_text(nodes)
 title
+
 # 영화평점
 nodes <- html_nodes(text, ".title em")
 point <- html_text(nodes)
 point
+
 # 영화리뷰 
 nodes <- html_nodes(text, xpath="//*[@id='old_content']/table/tbody/tr/td[2]/text()")
 imsi <- html_text(nodes, trim=TRUE)
-review <- imsi[nchar(imsi) > 0] 
+review <- imsi[nchar(imsi) > 0] #nchr은 문자열 길이를 추출한다.
+# 내용이 없는 것은 빼고 내용이 있는것만 review 변수에 다시 담고있다.
 review
 if(length(review) == 10) {
   page <- cbind(title, point)
