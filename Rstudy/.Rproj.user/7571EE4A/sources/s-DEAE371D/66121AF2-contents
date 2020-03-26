@@ -16,4 +16,4 @@ review <- imsi[nchar(imsi) > 0]
 
 review
 page <- cbind(point, review)
-write.csv(page, "movie_reviews.csv")
+write.csv(page, "daummovie1.csv")
