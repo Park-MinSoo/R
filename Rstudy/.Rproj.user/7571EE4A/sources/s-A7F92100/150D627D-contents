@@ -134,6 +134,7 @@ res = GET('https://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=001')
 htxt = read_html(res)
 link = html_nodes(htxt, 'div.list_body a'); length(link)
 article.href = unique(html_attr(link, 'href'))
+# unique 함수는 중복된애를 제거하는 기능을 가지고 있다.
 article.href
 
 # 이미지, 첨부파일 다운 받기 
