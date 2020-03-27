@@ -23,3 +23,24 @@ gsub("[[:digit:]]", "", word)
 gsub("[^[:alnum:]]", "", word) 
 gsub("[[:space:]]", "", word) #스페이스 없애라
 gsub("[[:punct:][:digit:]]", "", word) # 이런식으로 정규표현식을 묶어줄 수도 있다.
+
+
+install.packages("RSelenium")
+library(RSelenium)
+remDr<-remoteDriver(remoteServerAddr= "localhost" ,
+                    port = 4445, browserName= "chrome")
+remDr$open()
+remDr$navigate("http://www.google.com/")
+
+webElem<-remDr$findElement(using = "css", "[name = 'q']")
+# css에서의 name = q 값인거를 찾아줘줘
+webElem$sendKeysToElement(list("JAVA", key = "enter"))
+# JAVA를 입력하고 엔터까지 눌러줘줘
+
+remDr$open()
+remDr$navigate("http://www.naver.com/")
+
+webElem<-remDr$findElement(using = "css", "[name = 'query']")
+# css에서의 name = q 값인거를 찾아줘줘
+webElem$sendKeysToElement(list("JAVA", key = "enter"))
+
