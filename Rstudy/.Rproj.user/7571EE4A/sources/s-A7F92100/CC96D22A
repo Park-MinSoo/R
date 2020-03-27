@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585283959257.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "CC96D22A",
+    "lastKnownWriteTime" : 1585282456,
+    "last_content_update" : 1585282456,
+    "path" : "C:/hardy/Rstudy/textmining.R",
+    "project_path" : "textmining.R",
+    "properties" : {
+        "cursorPosition" : "3,35",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
