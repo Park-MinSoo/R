@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585295136564.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E8E60B8C",
+    "lastKnownWriteTime" : 1585300637,
+    "last_content_update" : 1585300637090,
+    "path" : "C:/hardy/Rstudy/webtoon1.R",
+    "project_path" : "webtoon1.R",
+    "properties" : {
+        "cursorPosition" : "12,24",
+        "scrollLine" : "3",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
