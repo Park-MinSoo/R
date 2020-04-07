@@ -5,8 +5,8 @@ url<-'https://hotel.naver.com/hotels/item?hotelId=hotel:Shilla_Stay_Yeoksam&dest
 remDr$navigate(url)
 Sys.sleep(3)
 pageLink <- NULL
+pageLink2 <- NULL
 reple <- NULL
-curr_PageOldNum <- 0
 repeat{
   doms <- remDr$findElements(using = "css", "body > div > div.ng-scope > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > ul > li > div.review_desc > p")
   Sys.sleep(1)
@@ -17,15 +17,10 @@ repeat{
   pageLink <- remDr$findElements(using='css',"body > div > div.ng-scope > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > div.paginate > a.direction.next")
   remDr$executeScript("arguments[0].click();",pageLink) 
   
-  Sys.sleep(2)
-  curr_PageElem <- remDr$findElement(using='css','body > div > div.ng-scope > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > div.paginate > a.direction.next')
-  curr_PageNewNum <- as.numeric(curr_PageElem$getElementText())
-  cat(paste(curr_PageOldNum, ':', curr_PageNewNum,'\n')) 
-  if(curr_PageNewNum == curr_PageOldNum)  {
-    cat("종료\n")
-    break; 
+  if(length(pageLink2) == 1)  break;
+  try(pageLink2<-remDr$findElement(using='css',
+                                   "body > div > div.ng-scope > div.container.ng-scope > div.content > div.hotel_used_review.ng-isolate-scope > div.review_ta.ng-scope > div.paginate > a.direction.next.disabled"), silent = T)
+  
   }
-  curr_PageOldNum <- curr_PageNewNum;
-}
 cat(length(reple), "개의 댓글 추출\n")
 write(reple,"naverhotel.txt")
