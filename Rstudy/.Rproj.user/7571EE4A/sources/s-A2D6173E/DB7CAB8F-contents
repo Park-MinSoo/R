@@ -62,13 +62,14 @@ repeat{
   reple <- append(reple, unlist(reple_v))
   cat(length(reple), "\n")
   pageLink <- remDr$findElements(using='css',"#reviewSection > div:nth-child(6) > div > span:nth-child(3) > i ")
-  remDr$executeScript("arguments[0].click();",pageLink)
+  remDr$executeScript("arguments[0].click();",pageLink) # 자바스크립트로 클릭 이벤트 처리를 하고 있다. 2번째 아규먼트가 반드시 list 형태여야 한다.
+  #clickElement() 가 잘 안될경우 이런식으로 적용하는 방법을 쓴다.
   Sys.sleep(2)
   curr_PageElem <- remDr$findElement(using='css','#reviewSection > div:nth-child(6) > div > span.Review-paginator-numbers > span.Review-paginator-number.Review-paginator-number--current')
   curr_PageNewNum <- as.numeric(curr_PageElem$getElementText())
   cat(paste(curr_PageOldNum, ':', curr_PageNewNum,'\n')) 
 # 방대한 양의 웹데이터를 크롤링 중  페이지 전환시 중간에 에러가 난다 하더라도 어디서 났는지 확인 할 수 있게 하기 위해 책갈피 같이 넣어놓는 것이다.
-  if(curr_PageNewNum == curr_PageOldNum)  {
+  if(curr_PageNewNum == curr_PageOldNum)  { # 마지막 페이지 인지를 체크하는 용도로 사용한다. 아닐경우 계속 또 읽어오고 또 읽어오기 때문
     cat("종료\n")
     break; 
   }
