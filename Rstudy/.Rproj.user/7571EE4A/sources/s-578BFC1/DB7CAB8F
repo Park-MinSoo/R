@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586219947470.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DB7CAB8F",
+    "lastKnownWriteTime" : 1586241700,
+    "last_content_update" : 1586241700180,
+    "path" : "C:/hardy/Rstudy/day7.R",
+    "project_path" : "day7.R",
+    "properties" : {
+        "cursorPosition" : "120,26",
+        "scrollLine" : "116",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
