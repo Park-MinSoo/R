@@ -16,20 +16,36 @@ pageLink <- NULL
 store <- NULL
 index <- 1
 
+# 전체 매장 갯수 추출 코드
+
+sizeCss <- "#container > div > form > fieldset > div > section > article.find_store_cont > article > article:nth-child(4) > div.loca_step3 > div.result_num_wrap > span"
+size <- remDr$findElements(using = 'css', sizeCss)
+limit <- sapply(size, function(x){x$getElementText()})
+totalStore <- unlist(limit) # 전체 511개
+ts <- as.numeric(totalStore)# "511"개 를 511로 숫자화
+
 repeat {
+  for(i in 1:ts%/%3){
 #매장명 추출
-  doms <- remDr$findElements(using = "css", "#mCSB_3_container > ul > li:nth-child(1) > strong")
+  cssAdd <- paste("#mCSB_3_container > ul > li:nth-child(",i,") > strong", sep="")                 
+  doms <- remDr$findElements(using = "css", cssAdd)
   store_v <- sapply(doms, function (x) {x$getElementText()})
   print(store_v)
   store <- append(store, unlist(store_v))
   
-
 #위도 추출(lat)
-
-#경도 추출(long)
+  
+#경도 추출(long)  
+#  doms <- remDr$findElements(using = "css", "#mCSB_3_container > ul > li:nth-child(1)")
+#  store_v <- sapply(doms, function (x) {x$getElementText()})
+ 
+#  lat <- doms$getElementValueOfCssProperty(data-lat)
+#  lng <- getElementValueOfCssProperty(data-long)
+  
 
 #주소 & 전화번호 추출
-  doms <- remDr$findElements(using = "css", "#mCSB_3_container > ul > li:nth-child(1) > p")
+  cssAdd2 <- paste("#mCSB_3_container > ul > li:nth-child(",i,") > p", sep="")                 
+  doms <- remDr$findElements(using = "css", cssAdd2)
   Sys.sleep(1)
   store_v <- sapply(doms, function (x) {x$getElementText()})
   store_v <- strsplit(unlist(store_v), split="\n")
@@ -37,13 +53,8 @@ repeat {
   store <- append(store, unlist(store_v))
   print(store)
   cat(length(store), "\n")
-
-
-# 전체 매장 갯수 추출 코드
-    sizeCss <- "#container > div > form > fieldset > div > section > article.find_store_cont > c"
-    size <- remDr$findElements(using = 'css selector', sizeCss)
-    limit <- sapply(size, function(x){x$getElementText()})
-    
+  
+  
 # 3개의 매장 정보를 읽고 세번째 매장 DOM 객체 위에서 스크롤 이벤트 발생
 # 마지막 매장에 도달한 경우에는 더 이상 스크롤이벤트 발생 불필요    
 
@@ -51,23 +62,8 @@ repeat {
       remDr$executeScript(
         "var dom=document.querySelectorAll('#mCSB_3_container > ul > li')[arguments[0]];
     dom.scrollIntoView();",list(index))
-    
+    index <- index + 1
+  }
 }
 
-
-cat(length(store), "개의 매장 추출\n")
-write(store, "starbucks.csv")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+write.csv(store, "starbucks.csv")

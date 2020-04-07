@@ -1,0 +1,77 @@
+#문제 1
+str(airquality)
+
+#문제 2
+x <- c(1:5)
+y <- c(seq(2,10,2))
+df1 <- data.frame(x,y)
+df1
+
+#문제 3
+x <- c(1:5)
+y <- c("a","b","c","d","e")
+z <- c(6:10)
+df2 <- data.frame(x,y,z)
+df2
+
+#문제 4
+제품명 <- c("사과","딸기","수박")
+가격 <- c(1800,1500,3000)
+판매량 <- c(24,38,13)
+df3 <- data.frame(제품명,가격,판매량,stringsAsFactors=F)
+df3
+
+#문제 5
+과일가격평균 <- sum(df3$가격)/3
+판매량평균<- sum(df3$판매량)/3
+과일가격평균;판매량평균
+
+#문제 6
+df4 <- data.frame(
+  name = c("Potter", "Elsa", "Gates", "Wendy", "Ben"),
+  gender = factor(c("M", "F", "M", "F", "M")),
+  math = c(85, 76, 99, 88, 40) ,stringsAsFactors=F)
+df4
+
+df4$stat <- c(76, 73, 95, 82, 35)
+df4$score <- df4$math + df4$stat
+df4$grade <-ifelse(df4$score >= 150,"A",
+                   ifelse(df4$score >= 100,"B", 
+                          ifelse(df4$score >=70,"C","D")))
+df4
+str(df4)
+
+#문제 7
+str(emp)
+
+#문제 8
+emp[3:5,]
+
+#문제 9
+emp["ename"]
+
+#문제 10
+emp[,c("ename", "sal")] #추출하고자 하는 칼러명이 2개 이상일때에는 $를 사용할 수 없다.
+
+#문제 11
+subset(emp[,c("ename","sal","job")],subset=emp$job=="SALESMAN") 
+
+#문제 12
+subset(emp, select=c("ename","sal","deptno"), subset=(sal>=1000 & sal<=3000))
+emp[emp$sal>=1000 & emp$sal <=3000, c("ename","sal","deptno")]
+
+#문제 13
+subset(emp[,c("ename","job","sal")],subset=emp$job!="ANALYST") 
+
+#문제 14
+subset(emp[,c("ename","job")],subset=emp$job=="SALESMAN"|emp$job=="ANALYST") 
+
+#문제 15
+subset(emp[,c("ename","sal")],subset=is.na(emp$comm))
+
+#문제 16
+emp[order(emp$sal),]
+
+#비교
+sort(emp$sal) # 월급만 소팅된다.
+order(emp$sal)  # 데이터프레임이 소팅된다.
