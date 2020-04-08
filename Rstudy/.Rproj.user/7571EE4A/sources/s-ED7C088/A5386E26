@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586319212665.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3361228270",
+    "id" : "A5386E26",
+    "lastKnownWriteTime" : 1586323154,
+    "last_content_update" : 1586323154589,
+    "path" : "C:/hardy/Rstudy/day8-1.R",
+    "project_path" : "day8-1.R",
+    "properties" : {
+        "cursorPosition" : "72,7",
+        "scrollLine" : "71",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

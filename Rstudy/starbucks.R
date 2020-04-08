@@ -61,7 +61,7 @@ repeat {
     "주소" = store_add,
     "전화번호" = store_num
   )
-  totalStore <- append(totalStore,totaldata)
+  totalStore <- rbind(totalStore,totaldata)
 # 3개의 매장 정보를 읽고 세번째 매장 DOM 객체 위에서 스크롤 이벤트 발생
 # 마지막 매장에 도달한 경우에는 더 이상 스크롤이벤트 발생 불필요    
 
