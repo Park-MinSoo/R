@@ -81,7 +81,7 @@ top
 df <- xmlToDataFrame(getNodeSet(doc, "//itemList"))
 df
 str(df)
-
+View(df)
 busRouteId <- df$busRouteId
 busRouteId
 
@@ -94,7 +94,7 @@ top <- xmlRoot(doc)
 top
 df <- xmlToDataFrame(getNodeSet(doc, "//itemList"))
 df
-
+View(df)
 # 서울시 빅데이터- XML 응답 처리
 # http://openapi.seoul.go.kr:8088/796143536a756e69313134667752417a/xml/LampScpgmtb/1/100/
 
