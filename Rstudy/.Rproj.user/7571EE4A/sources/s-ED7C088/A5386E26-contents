@@ -194,7 +194,7 @@ myf <- function(x, wt=T){
   else
     r <- paste("#", x, "#")
   count <<- count + 1;
-  return(100)
+  return(r)
 }
 result <- sapply(df$w, myf)
 length(result)
