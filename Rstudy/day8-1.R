@@ -142,28 +142,48 @@ gender <- c("M", "F","M","M","F","F")
 df <- data.frame(w=weight, h=height)
 df
 
-apply(df, 1, sum, na.rm=TRUE)
+apply(df, 1, sum, na.rm=TRUE) # 함수명 뒤에 오는 아규먼트들은 다 SUM한테 가게된다.
 apply(df, 2, sum, na.rm=TRUE)
+#주로 apply는 행단위나 열단위로 무엇을 하라 할때 사용한다.
+
 lapply(df, sum, na.rm=TRUE)
+#lapply는 기본으로 열단위로 일하기 때문에 '1'을 준것과 마찬가지다.
+#lapply는 list로 결과값을 리턴 받는다.
+
 sapply(df, sum, na.rm=TRUE)
+#sapply는 벡터로 리턴을 해'줄'수있다. 해줄 수 있는거지 list나 다른것으로 판단해서 리턴할 수도 있다.
+
 tapply(1:6, gender, sum, na.rm=TRUE)
+#그룹핑 하여 각각 sum을 하게 되는 결과가 나온다.
+
 tapply(df$w, gender, mean, na.rm=TRUE)
+
 mapply(paste, 1:5, LETTERS[1:5], month.abb[1:5])
+# 함수를 맨 앞에 넣는다는 특징을 가지고 있다. 왜냐면 가변형 이기 때문이다.(뒤에 몇개가 오던지 상관이 없기 때문)
+
 v<-c("abc", "DEF", "TwT")
 sapply(v, function(d) paste("-",d,"-", sep=""))
+#여기서 이 function은 3번 호출되게 된다. abd 전하면서 1번, DEF 전하면서 1번, TwT 전하면서 1번.
+# R의 function은 리턴값을 주지 않아도 마지막에 리턴된결과를 바로 주게된다.
+
 
 l<-list("abc", "DEF", "TwT")
 sapply(l, function(d) paste("-",d,"-", sep=""))
-lapply(l, function(d) paste("-",d,"-", sep=""))
+lapply(l, function(d) paste("-",d,"-", sep="")) #리스트 형식으로 리턴하고있다.
 
 flower <- c("rose", "iris", "sunflower", "anemone", "tulip")
-length(flower)
-nchar(flower)
-sapply(flower, function(d) if(nchar(d) > 5) return(d))
-sapply(flower, function(d) if(nchar(d) > 5) d)
-sapply(flower, function(d) if(nchar(d) > 5) return(d) else return(NA))
+length(flower) # 벡터에 들어있는 전체의 데이터(원소) 갯수
+nchar(flower) # number of CharacterSet의 줄인말로 각각의 Character 데이터의 문자개수 
+
+sapply(flower, function(d) if(nchar(d) > 5) return(d)) #이번에는 리스트로 리턴하였다.
+sapply(flower, function(d) if(nchar(d) > 5) d) #위랑 결과는 같지만 명확하게 return을 써주는 것이 좋다.
+
+sapply(flower, function(d) if(nchar(d) > 5) return(d) else return(NA)) # 이번엔 또 Named 벡터로 리턴되어나왔다.
 sapply(flower, function(d) paste("-",d,"-", sep=""))
-sapply(flower, function(d, n) if(nchar(d) > n) return(d), 4)
+sapply(flower, function(d, n) if(nchar(d) > n) return(d), 4) #여기서 4는 2번째 아규먼트로 전달되는 n에 들어가게 된다.
+#function의 첫번째 데이터셋은 정해져 있지만, 2번째 아규먼트 이후는 뒤에서 전달되는 값을 사용하게된다.
+sapply(flower, function(d, n=5) if(nchar(d) > n) return(d))
+
 
 count <- 1
 myf <- function(x, wt=T){
