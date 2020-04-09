@@ -1,0 +1,20 @@
+# 문제 1
+(클릭수 <- read.table("data/product_click.log", header=TRUE))
+클릭수$p001
+table(클릭수$p001)
+png(filename="clicklog1.png", height=400, width=700, bg="white")
+barplot(table(클릭수$p001), main="세로바 그래프 실습", xlab="상품ID", ylab="클릭수", border="black", col=terrain.colors(10), las=2)
+dev.off()
+
+#문제 2
+
+
+
+
+
+
+
+
+
+
+
