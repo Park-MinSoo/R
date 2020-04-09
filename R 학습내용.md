@@ -72,11 +72,28 @@ c(10,T)   ----> c(10,1)
 - 박영진 멘토님
 
   - 데이터는 전처리 과정이 굉장히 중요하다.
+
     - 엑셀을 특히 잘써야한다. Hlookup 등
+
     - 2~3 군데에서의 데이터를 모아와야한다.
+
     - 구글 스칼라 (논문만 검색할수 있음)
+
     - What would you like to show? (표현하기 적합한 그래프 차트 도움)
+
     - https://www.nsuchaud.fr/wp-content/uploads/2019/08/analysis-type-of-chart-1024x960.jpg
+
     - yjpark@urbanisom.com
 
+      
+
 - 최종원 멘토님
+
+  - Data Visualiztion
+    - 눈에 보이지 않은 것을 테이터로 눈에 보이도록 하는 것
+  - 타 영영과의 융합 (Mash Up)
+  - 자연어 처리
+    - 형태소 분석 -> 연관어 추출, 검색/ 빈도
+    - 구문 분석  ->   연관어 추출, 검색/ 빈도
+    - 의미 분석 -> 문자의 긍부정, 인사이트 추출
+    - 담화 분석 -> 챗봇
