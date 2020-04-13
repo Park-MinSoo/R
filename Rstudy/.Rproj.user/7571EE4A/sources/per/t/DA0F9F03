@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586399160883.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1542723548",
+    "id" : "DA0F9F03",
+    "lastKnownWriteTime" : 1586409350,
+    "last_content_update" : 1586409350419,
+    "path" : "C:/hardy/Rstudy/chartExam.R",
+    "project_path" : "chartExam.R",
+    "properties" : {
+        "cursorPosition" : "4,39",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
