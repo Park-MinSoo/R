@@ -1,39 +1,48 @@
 # 날짜와 시간 관련 기능을 지원하는 함수들
 
-Sys.Date()
-Sys.time()
+Sys.Date() # 현재 날짜 년,월,일일
+Sys.time() # 현재 날짜 및 시간
 
 class(Sys.Date())
 class(Sys.time())
 
 as.Date("2020-04-15")
 as.Date("2020/04/15")
-as.Date("2020,04,15")
-as.Date("15-04-2020")
+as.Date("2020,04,15") # 이런식으로 설정하는것은 에러가 난다.
+as.Date("15-04-2020") # 앞의자리가 무조건 연도이고 00을 붙인다.
+as.Date("20-04-151")
 
+#이런식으로 매개변수 순서와 포맷을 지정해 줄 수 있다.
 as.Date("2020,04,15", format="%Y,%m,%d")
 as.Date("15-04-2020", format="%d-%m-%Y")
 
 
 (today <- Sys.Date())
-format(today, "%Y년 %m월 %d일%")
-format(today, "%d일 %B %Y년")
-format(today, "%y")
-format(today, "%Y")
+format(today, "%Y년 %m월 %d일")
+format(today, "%d일 %B %Y년") #%B는 04월을 4월로 출력하여준다.
+format(today, "%y") # 소문자 y는 연도의 끝2자리 
+format(today, "%Y") # 대문자 Y는 연도의 4자리
 format(today, "%B")
-format(today, "%a")
-format(today, "%A")
+format(today, "%b")
+format(today, "%m")
+format(today, "%a") # 소문자 a는 '?'요일을 출력
+format(today, "%A") # 대문자 A는 '?요일'을 출력
 weekdays(today) 
 months(today) 
-quarters(today)
+
+Sys.setlocale("LC_TIME","English") #환경 변수를 영어로 변경
+Sys.setlocale() #다시 한국어로 변경
+
+quarters(today) #1년의 분기를 나타내어 준다.
 unclass(today)  # 1970-01-01을 기준으로 얼마나 날짜가 지났지는 지의 값을 가지고 있다.
 Sys.Date()
 Sys.time()
 Sys.timezone()
 
 as.Date('1/15/2018',format='%m/%d/%Y') # format 은 생략 가능
-as.Date('4월 26, 2018',format='%B %d, %Y')
-as.Date('110228',format='%d%b%y') 
+as.Date('4월 26, 2018',format='%B %d, %Y') # %B 월을 뽑긴 하는데 
+as.Date('110228',format='%d%b%y') #b는 앞의 '0'을 인식하지 못한다.
+as.Date('110228',format='%d%m%y')
 
 x1 <- "2019-01-10 13:30:41"
 # 문자열을 날짜형으로
@@ -211,8 +220,6 @@ strsplit(littleprince, " ")[[3]]
 strsplit(littleprince, " ")[[3]][5]
 
 
-##
-
 # dplyr 패키지를 학습하자....
 
 install.packages("dplyr") 
@@ -261,7 +268,7 @@ class2 <- exam %>% filter(class == 2)  # class가 2인 행 추출, class2에 할
 mean(class1$math)                      # 1반 수학 점수 평균 구하기
 mean(class2$math)                      # 2반 수학 점수 평균 구하기
 
-
+#select함수는 select절에 주어지는 컬럼명의 데이타 프레임이 생략된다. 즉, exam$math라고 쓸 필요가 없다.
 exam %>% select(math)  # math 추출
 exam %>% select(english)  # english 추출
 # 여러 변수 추출하기
@@ -273,30 +280,32 @@ exam %>% select(-math, -english)  # math, english 제외
 # class가 1인 행만 추출한 다음 english 추출
 exam %>% filter(class == 1) %>% select(english)
 # 가독성 있게 줄 바꾸기
-exam %>%
+exam %>% #  %>%는 절대 앞에 올수 없다. 즉, 다음행이 아닌 그행의 마지막에 적어주어야함. 
+        # %>% 은 Ctrl+Shift+M을 누르면 단축키이다! 
   filter(class == 1) %>%  # class가 1인 행 추출
   select(english)         # english 추출
 # 일부만 출력하기
 exam %>%
   select(id, math) %>%  # id, math 추출
-  head                  # 앞부분 6행까지 추출
+  head                  # 앞부분 6행까지 추출(head함수는 따로 값을 지정 안하면 6개를 뽑아온다.)
 # 일부만 출력하기
 exam %>%
   select(id, math) %>%  # id, math 추출
   head(10)              # 앞부분 10행까지 추출
 
-iris %>% pull(Species)
-iris %>% select(Species)
-iris %>% select_if(is.numeric)
+iris %>% pull(Species) # pull은 vector로 꺼내준다.
+iris %>% select(Species) # select는 data.frame으로 꺼내준다.
+iris %>% select_if(is.numeric) # numeric만 해당하는 열을 꺼내달라.
 iris %>% select(-Sepal.Length, -Petal.Length)
 
-# Select column whose name starts with "Petal"
+View(iris)
+# Select column whose name starts with "Petal" / ~로 시작하는
 iris %>% select(starts_with("Petal"))
 
-# Select column whose name ends with "Width"
+# Select column whose name ends with "Width" / ~로 끝나는
 iris %>% select(ends_with("Width"))
 
-# Select columns whose names contains "etal"
+# Select columns whose names contains "etal" / ~를 포함하는
 iris %>% select(contains("etal"))
 
 # Select columns whose name maches a regular expression
@@ -309,13 +318,13 @@ exam %>% arrange(math)  # math 오름차순 정렬
 exam %>% arrange(desc(math))  # math 내림차순 정렬
 # 정렬 기준 변수 여러개 지정
 exam %>% arrange(desc(class), desc(math))  # class 및 math 오름차순 정렬
-exam %>% arrange(desc(math)) %>% head(1)
+exam %>% arrange(desc(math)) %>% head(1) # 수학점수가 가장 높은 학생
 
-exam %>%
+exam %>%   #mutate는 없었던 새로운 변수를 추가하는 것이다.
   mutate(total = math + english + science) %>%  # 총합 변수 추가
   head                                          # 일부 추출
 #여러 파생변수 한 번에 추가하기
-exam %>%
+exam %>% # 이런식으로 mutate에 몇개든 새로 추가 하고자 하는 변수를 만들어줄 수 있다.
   mutate(total = math + english + science,          # 총합 변수 추가
          mean = (math + english + science)/3) %>%   # 총평균 변수 추가
   head     
@@ -334,3 +343,4 @@ exam %>%
   mutate(total = math + english + science) %>%  # 총합 변수 추가
   arrange(total) %>%                            # 총합 변수 기준 정렬
   head                                          # 일부 추출
+# ---> 못한 학생 순서대로 6명이 나오게 될 것이다.
