@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586824092128.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2401693984",
+    "id" : "7234863D",
+    "lastKnownWriteTime" : 1586768601,
+    "last_content_update" : 1586768601,
+    "path" : "C:/hardy/Rstudy/dplyr_lab1.R",
+    "project_path" : "dplyr_lab1.R",
+    "properties" : {
+        "cursorPosition" : "34,38",
+        "scrollLine" : "19",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

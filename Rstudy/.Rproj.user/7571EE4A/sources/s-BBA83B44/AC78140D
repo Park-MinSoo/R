@@ -7,19 +7,19 @@
     "folds" : "",
     "hash" : "0",
     "id" : "AC78140D",
-    "lastKnownWriteTime" : 1586823958,
-    "last_content_update" : 1586823958360,
+    "lastKnownWriteTime" : 1586827518,
+    "last_content_update" : 1586827518923,
     "path" : "C:/hardy/Rstudy/day11.R",
     "project_path" : "day11.R",
     "properties" : {
-        "cursorPosition" : "167,19",
-        "scrollLine" : "94",
+        "cursorPosition" : "74,0",
+        "scrollLine" : "55",
         "tempName" : "Untitled1"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 2,
+    "relative_order" : 3,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

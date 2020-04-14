@@ -1,7 +1,8 @@
 # 전체 요약하기
 
-exam %>% summarise(n = n())
-exam %>% tally()
+library(dplyr)
+exam %>% summarise(n = n()) #  여기서 함수 n()은 행의 갯수를 추출한다.
+exam %>% tally() # 전체 행의 갯수를 추출하는것은 tally라는 함수 사용과 동일하다.
 
 exam %>% summarise(mean_math = mean(math))  # math 평균 산출
 mean(exam$math)
@@ -9,16 +10,17 @@ mean(exam$math)
 
 str(exam %>% summarise(mean_math = mean(math),
                        mean_english = mean(english),
-                       mean_science = mean(science),) ) # 모든 과목의 평균 산출
+                       mean_science = mean(science)) ) # 모든 과목의 평균 산출
 
 
-# 집단별로 요약하기
+#집단별로 요약하기
+View(exam)
 exam %>%
-  group_by(class) %>% summarise(n = n()) 
+  group_by(class) %>% summarise(n = n())
 exam %>%
   group_by(class) %>% tally()   
 exam %>% count(class)         # count() is a short-hand for group_by() + tally()
-# add_tally() 와 ass_count(..) 도 있음
+# add_tally() 와 add_count(..) 도 있음
 
 exam %>%
   group_by(class) %>%                # class별로 분리
@@ -31,7 +33,8 @@ exam %>%
             median_math = median(math), # math 중앙값
             n = n())                    # 학생 수
 
-
+?mpg
+??mpg
 str(mpg)
 # 각 집단별로 다시 집단 나누기
 mpg %>%
@@ -60,7 +63,7 @@ mpg %>%
   head(5)                              # 1~5위까지 출력
 
 mpg %>%
-  filter(class == "suv") %>%           
+  filter(class == "suv") %>%    # 위의 코드보다 이런식으로 구현하는게 메모리 낭비 방지에 도움이 된다.       
   mutate(tot = (cty+hwy)/2) %>% 
   group_by(manufacturer) %>%           
   summarise(mean_tot = mean(tot)) %>%  
