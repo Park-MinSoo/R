@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586830793909.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "909B6ED7",
+    "lastKnownWriteTime" : 753336307826913123,
+    "last_content_update" : 1586830793909,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "C8DADCC0",
+        "caption" : "midwest",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=midwest&cache_key=C8DADCC0",
+        "displayedObservations" : "437",
+        "environment" : "",
+        "expression" : "midwest",
+        "object" : "midwest",
+        "preview" : "0",
+        "totalObservations" : "437",
+        "variables" : "29"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

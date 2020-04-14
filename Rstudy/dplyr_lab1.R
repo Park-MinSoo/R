@@ -26,7 +26,7 @@ emp %>%  filter(job != 'ANALYST') %>% select(ename, job, sal)
 emp %>%  filter(job == 'SALESMAN' | job == 'ANALYST') %>% select(ename, job)
 
 #[문제9] 부서별 직원들 월급의 합을 출력한다.
-
+emp %>% group_by(deptno) %>% summarise(sum_sal = sum(sal))
 
 #[문제10] 월급이 적은 순으로 모든 직원 정보를 출력한다.
 emp %>% arrange(sal)
@@ -40,10 +40,8 @@ emp %>% arrange(desc(sal)) %>% head(1)
 empnew <- rename(emp, salary = sal, commrate = comm)
 empnew
 
-
 #[문제13] 가장 많은 인원이 일하고 있는 부서 번호를 출력한다.
-
-
+emp %>% count(deptno) %>% arrange(desc(n)) %>% head(1)
 
 #[문제14] 각 직원들 이름의 문자 길이를 저장하는 enamelength 라는 컬럼을 추가한 다음에
 #이름 길이가 짧은 순으로 직원의 이름을 출력한다.
@@ -51,6 +49,7 @@ t1 <- nchar(as.character(emp$ename))
 emp %>% mutate(enamelength = t1) %>% arrange(enamelength)
 
 #[문제15] 커미션이 정해진 직원들의 명수를 출력한다.
+emp %>% filter(comm != 'NA') %>% count(comm) %>% summarise(sum_comm = sum(n))
 
 
 
