@@ -124,8 +124,11 @@ sum(df_nomiss$score)                       # score 합계 산출
 # score, sex 결측치 제외
 df_nomiss <- df %>% filter(!is.na(score) & !is.na(sex))
 df_nomiss  
+
+
 # 결측치가 하나라도 있으면 제거하기
 df_nomiss2 <- na.omit(df)  # 모든 변수에 결측치 없는 데이터 추출
+
 
 #분석에 필요한 데이터까지 손실 될 가능성 유의
 # 함수의 결측치 제외 기능 이용하기 - na.rm = T
@@ -133,7 +136,7 @@ mean(df$score, na.rm = T)  # 결측치 제외하고 평균 산출
 sum(df$score, na.rm = T)   # 결측치 제외하고 합계 산출
 #summarise()에서 na.rm = T사용하기
 # 결측치 생성
-exam <- read.csv("csv_exam.csv")            # 데이터 불러오기
+exam <- read.csv("data/csv_exam.csv")            # 데이터 불러오기
 table(is.na(exam))
 exam[c(3, 8, 15), "math"] <- NA             # 3, 8, 15행의 math에 NA 할당
 #평균 구하기
@@ -145,6 +148,7 @@ exam %>% summarise(mean_math = mean(math, na.rm = T),      # 평균 산출
                    median_math = median(math, na.rm = T))  # 중앙값 산출
 boxplot(exam$math)
 mean(exam$math, na.rm = T)  # 결측치 제외하고 math 평균 산출
+
 # 평균으로 대체하기
 exam$math <- ifelse(is.na(exam$math), 55, exam$math)  # math가 NA면 55로 대체
 table(is.na(exam$math))                               # 결측치 빈도표 생성
@@ -172,10 +176,13 @@ outlier %>%
   summarise(mean_score = mean(score))
 
 mpg <- as.data.frame(ggplot2::mpg)
+View(mpg)
 boxplot(mpg$hwy)
+boxplot(mpg$hwy, range =2) # 이상치 처리를 IQR의 1.5배가 아닌 2배로 바꿔주었다.
 
 #상자그림 통계치 출력
-boxplot(mpg$hwy)$stats  # 상자그림 통계치 출력
+boxplot(mpg$hwy)$stats  # 상자그림 통계치 출력, summary한 값이 나오게 된다.
+summary(mpg$hwy)
 
 # 결측 처리하기
 # 12~37 벗어나면 NA 할당

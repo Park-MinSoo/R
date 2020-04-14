@@ -12,9 +12,9 @@
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "64725512",
+        "cacheKey" : "9C815E1B",
         "caption" : "mpg",
-        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=mpg&cache_key=64725512",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=mpg&cache_key=9C815E1B",
         "displayedObservations" : "234",
         "environment" : "",
         "expression" : "mpg",
