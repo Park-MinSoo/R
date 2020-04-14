@@ -12,14 +12,14 @@
     "path" : "C:/hardy/Rstudy/day11.R",
     "project_path" : "day11.R",
     "properties" : {
-        "cursorPosition" : "180,61",
-        "scrollLine" : "170",
+        "cursorPosition" : "165,30",
+        "scrollLine" : "130",
         "tempName" : "Untitled1"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 3,
+    "relative_order" : 1,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"
