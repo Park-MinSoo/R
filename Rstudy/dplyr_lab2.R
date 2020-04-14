@@ -52,15 +52,39 @@ midwest %>%
 midwest %>%  
   mutate(result = ifelse(percent >= mean(percent), "large", "small"))
   
+# 4-1.
+bind_rows( #출력을 합쳐서 보내준다.
+mpg %>% filter(displ <= 4) %>%
+  summarise(mean_hwy = mean(hwy))
+,  
+mpg %>% filter(displ >= 5) %>% 
+  summarise(mean_hwy = mean(hwy))
+)
 
+# 4-2.
+mpg %>%
+  filter(manufacturer == "audi" | manufacturer == "toyota") %>%  
+  group_by(manufacturer) %>% 
+  summarise(mean_cty = mean(cty))
 
+# 4-3.
+mpg %>%
+  filter(manufacturer == "chevrolet" | manufacturer == "ford" | manufacturer == "honda") %>%  
+  summarise(mean_hwy = mean(hwy))
 
+# 5-1.
+mpg %>% select(class, cty) -> newmpg
+newmpg %>% head()
 
+# 5-2. 
+newmpg %>%
+  filter(class=='suv' | class=='compact') %>% 
+  group_by(class) %>% 
+  summarise(mean_cty = mean(cty))
 
-
-
-
-
-
-
-
+# 문제 6
+mpg %>% 
+  filter(manufacturer == "audi") %>% 
+  arrange(desc(hwy)) %>% 
+  head(5)
+  

@@ -81,7 +81,7 @@ test2 <- data.frame(id = c(1, 5, 3, 4, 2, 7),
                     final = c(70, 80, 65, 95, 83, 0))
 
 # id 기준으로 합치기
-total <- full_join(test1, test2, by = "id")  # id 기준으로 합쳐 total에 할당
+total <- full_join(test1, test2, by = "id")  # by를 통해 id 기준으로 합쳐 total에 할당
 # 다른 데이터 활용해 변수 추가하기
 # 반별 담임교사 명단 생성
 name <- data.frame(class = c(1, 2, 3, 4, 5), teacher = c("kim", "lee", "park", "choi", "jung"))

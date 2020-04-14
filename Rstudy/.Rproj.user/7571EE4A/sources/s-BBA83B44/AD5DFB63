@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "AD5DFB63",
-    "lastKnownWriteTime" : 1586832491,
-    "last_content_update" : 1586832491132,
+    "lastKnownWriteTime" : 1586840123,
+    "last_content_update" : 1586840123657,
     "path" : "C:/hardy/Rstudy/dplyr_lab2.R",
     "project_path" : "dplyr_lab2.R",
     "properties" : {
-        "cursorPosition" : "54,0",
-        "scrollLine" : "37",
+        "cursorPosition" : "55,25",
+        "scrollLine" : "49",
         "tempName" : "Untitled1"
     },
     "read_only" : false,

@@ -80,9 +80,9 @@ pct
 plt
 class(pct)
 class(plt)
-as.integer(pct) # ?
-as.integer(plt) # ?
-unclass(plt) # ?
+as.integer(pct) # 1970/1/1 부터의 초단위 계산산
+as.integer(plt) # 밑에 확인하고 보면 이해가 쉽다.
+unclass(plt) # 뭐가 먼지
 plt$sec
 plt$min
 plt$hour
@@ -178,17 +178,17 @@ words <- c("ct", "at", "bat", "chick", "chae", "cat", "cheanomeles", "chase", "c
 # grep 명령어
 grep("che", words, value=T)
 grep("at", words, value=T)
-grep("[ch]", words, value=T) # ?
-grep("[at]", words, value=T) # ?
-grep("ch|at", words, value=T) # ?
+grep("[ch]", words, value=T) # c 또는 h가 들어간것
+grep("[at]", words, value=T) # a 또는 t가 들어간것
+grep("ch|at", words, value=T) # ch 또는 at
 grep("ch(e|i)ck", words, value=T)
 grep("chase", words, value=T)
 grep("chas?e", words, value=T)
 grep("chas*e", words, value=T)
 grep("chas+e", words, value=T)
 grep("ch(a*|e*)se", words, value=T)
-grep("^c", words, value=T)
-grep("t$", words, value=T)
+grep("^c", words, value=T) # 맨앞에가 c로 시작한다.
+grep("t$", words, value=T) # 맨뒤에가 t로 끝난다.
 grep("^c.*t$", words, value=T)
 
 words2 <- c("12 Dec", "OK", "http//", 
