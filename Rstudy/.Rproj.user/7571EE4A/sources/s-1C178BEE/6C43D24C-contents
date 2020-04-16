@@ -80,10 +80,10 @@ wordcloud(words$keyword, words$freq,
           rot.per = 0.3, scale = c(4, 1), 
           colors = rainbow(7))
 #######
-wordcloud2(words, fontFamily = "휴먼옛체")
+wordcloud2(words, fontFamily = "휴먼옛체") #wordcloud2는 폰트를 직접 입력 할 수 있다.
 wordcloud2(words,rotateRatio = 1)
-wordcloud2(words,rotateRatio = 0.5)
-wordcloud2(words,rotateRatio = 0)
+wordcloud2(words,rotateRatio = 0.5) # 반만 회전시켜달라
+wordcloud2(words,rotateRatio = 0) #회전시키지 말라.
 wordcloud2(words,size=0.5,col="random-dark")
 wordcloud2(words,size=0.5,col="random-dark", figPath="book/peace.png")
 wordcloud2(words,size=0.7,col="random-light",backgroundColor = "black")
@@ -94,8 +94,11 @@ wordcloud2(data = demoFreq, shape = 'cardioid')
 wordcloud2(data = demoFreq, shape = 'triangle-forward')
 wordcloud2(data = demoFreq, shape = 'triangle')
 result<-wordcloud2(data = demoFreq, shape = 'pentagon')
-library("htmlwidgets")
+
+install.packages("htmlwidgets")
+library(htmlwidgets) # install.packages 에는 인용부호("")를 붙이고 library에는 인용부호를 붙이지 않는다.
 saveWidget(result,"tmpwc.html",selfcontained = F)
+#같은 파일내에 폴더가 생성되며 그곳에 js , css등 전부 생성이되어 다 가져가서 사용하게 된다.
 head(demoFreq)
 str(demoFreq)
 
