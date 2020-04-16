@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587018348964.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C8FC6ABE",
+    "lastKnownWriteTime" : 7957692463288839791,
+    "last_content_update" : 1587018348964,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "348F7BC",
+        "caption" : "gong9",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=gong9&cache_key=348F7BC",
+        "displayedObservations" : "244",
+        "environment" : "",
+        "expression" : "gong9",
+        "object" : "gong9",
+        "preview" : "0",
+        "totalObservations" : "244",
+        "variables" : "2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

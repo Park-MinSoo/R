@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587014910279.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7E7A6EA1",
+    "lastKnownWriteTime" : 1587017871,
+    "last_content_update" : 1587017871007,
+    "path" : "C:/hardy/Rstudy/tm1.R",
+    "project_path" : "tm1.R",
+    "properties" : {
+        "cursorPosition" : "12,27",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
