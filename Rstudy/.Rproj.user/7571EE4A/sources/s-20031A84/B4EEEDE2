@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587112646562.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B4EEEDE2",
+    "lastKnownWriteTime" : 7957695011165139568,
+    "last_content_update" : 1587112646562,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "15CA23C6",
+        "caption" : "GNI2014",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=GNI2014&cache_key=15CA23C6",
+        "displayedObservations" : 188,
+        "environment" : "",
+        "expression" : "GNI2014",
+        "object" : "GNI2014",
+        "preview" : 0,
+        "totalObservations" : 188,
+        "variables" : 5
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
