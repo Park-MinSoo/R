@@ -247,3 +247,28 @@ ggplotly(p)
 # 인터랙티브 막대 그래프 만들기
 p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) + geom_bar(position = "dodge")
 ggplotly(p)
+
+
+p <- ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point()
+ggplotly(p)
+
+
+ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point()
+ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point() + scale_color_manual(values = rainbow(15))
+ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point() + scale_color_manual(values = topo.colors(15))
+ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point() + scale_color_brewer(palette = 'Set3')
+#행 설정
+ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+
+  geom_point()+guides(color = guide_legend(nrow = 6))
+
+#열 설정
+ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+
+  geom_point()+ scale_fill_brewer(palette="Reds")+ guides(color = guide_legend(ncol = 2)) 
+
+# 범례 항목들 역순으로
+ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+
+  geom_point()+guides(color = guide_legend(reverse = TRUE))
+
+# 범례 없애기
+ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+
+  geom_point()+guides(color=F)
