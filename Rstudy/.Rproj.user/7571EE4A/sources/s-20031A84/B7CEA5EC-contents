@@ -5,10 +5,10 @@ library(rvest)
 url = "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
 read1 <- read_html(url)
 read2 <- htmlParse(read1)
-first_table <- getNodeSet(read2,"//table")[[1]]
+first_table <- getNodeSet(read2,"//table")[[1]] # '1'번째 테이블을 가져오게 된다.
 xt <- readHTMLTable(first_table)
-xt
-
+str(xt)
+head(xt)
 
 # http://www.airkorea.or.kr/ : 한국환경공단 실시간 자료 조회
 # 동적페이지
@@ -19,10 +19,10 @@ remDr$open()
 url <- "http://www.airkorea.or.kr/web/pmRelay?itemCode=11008&pMENU_NO=109"
 remDr$navigate(url)
 
-webElem <- remDr$findElement(using = "css", "#dateDiv_1 > img")
-webElem$clickElement()
+webElem <- remDr$findElement(using = "css", "#dateDiv_1 > img") # 날짜선택 css 태그
+webElem$clickElement() # 클릭하여 누른다.
 Sys.sleep(1)
-webElem <- remDr$findElement(using = "css", "#ui-datepicker-div > table > tbody > tr:nth-child(2) > td:nth-child(7) > a")
+webElem <- remDr$findElement(using = "css", "#ui-datepicker-div > table > tbody > tr:nth-child(2) > td:nth-child(7) > a") # 11일을 클릭
 webElem$clickElement()
 Sys.sleep(1)
 webElem <- remDr$findElement(using = "css", "#cont_body > form > div > div > a:nth-child(1)")
@@ -33,14 +33,16 @@ library(XML)
 elem <- remDr$findElement(using="css", value=".st_1")
 elemtxt <- elem$getElementAttribute("outerHTML")
 elem_html <- htmlTreeParse(elemtxt, asText = TRUE, useInternalNodes = T, encoding="UTF-8")
-Sys.setlocale("LC_ALL", "English")
+Sys.setlocale("LC_ALL", "English") #얘가 없으면 한글이 다 깨지게 된다.
 games_table <- readHTMLTable(elem_html, header = T, stringsAsFactors = FALSE, )[[1]]
-Sys.setlocale()
+#readHTMLTable 의 가장 큰 문제는 한글이 깨진다는 것이다...(영어는 일 잘함)
+Sys.setlocale() # 다시 한국으로 기본을 설정해준다.(아규먼트를 안주면 한국이 기본설정으로 변경이 됨.)
 Encoding(names(games_table)) <- "UTF-8"
 head(games_table)
 str(games_table)
 View(games_table)
 tail(games_table)
+Sys.getlocale()
 
 # ggplot2 패키지를 활용한 고급시각화
 
