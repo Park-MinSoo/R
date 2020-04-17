@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587098857431.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AEBA381F",
+    "lastKnownWriteTime" : 8246223293474941986,
+    "last_content_update" : 1587098857431,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "D91F9805",
+        "caption" : "airquality",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=airquality&cache_key=D91F9805",
+        "displayedObservations" : "153",
+        "environment" : "",
+        "expression" : "airquality",
+        "object" : "airquality",
+        "preview" : "0",
+        "totalObservations" : "153",
+        "variables" : "6"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -45,6 +45,7 @@ tail(games_table)
 Sys.getlocale()
 
 # ggplot2 패키지를 활용한 고급시각화
+# 특징 , 레이어링을 한다. x축, y축해서 밑바탕을 그린다.
 
 install.packages("ggplot2") # ggplot2 패키지 설치
 install.packages("glue") # ggplot2 로드시 이 패키지 오류나면 
@@ -54,14 +55,14 @@ library(dplyr)
 mpg <- as.data.frame(ggplot2::mpg)
 str(mpg)
 ggplot(mpg) + geom_point(aes(displ, hwy))
-ggplot(mpg, aes(displ, hwy)) + geom_point()
+ggplot(mpg, aes(displ, hwy)) + geom_point() # 결과는 같다.
 # x축 displ, y축 hwy로 지정해 배경 생성
 ggplot(data = mpg, aes(x = displ, y = hwy))
 # 배경에 산점도 추가
 ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point()
-ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point() + coord_cartesian(xlim=c(3, 6))
+ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point() + coord_cartesian(xlim=c(3, 6)) # coord_cartesian은 
 ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point() + coord_cartesian(xlim=c(3, 6), ylim=c(10, 30))
-ggplot(data = mpg, aes(x = displ, y = hwy, col = drv)) + geom_point()
+ggplot(data = mpg, aes(x = displ, y = hwy, col = drv)) + geom_point() #구동방식별로 색상을 다르게 하고 있다.
 ggplot(data = mpg, aes(x = displ, y = hwy)) + geom_point(aes(color=drv))
 
 data(airquality)
@@ -71,7 +72,9 @@ ggplot(airquality, aes(x=Day, y=Temp))
 ggplot(airquality, aes(x=Day, y=Temp)) + geom_point()
 ggplot(airquality, aes(x=Day, y=Temp)) + geom_point(size=3, color="red")
 ggplot(airquality, aes(x=Day, y=Temp)) + geom_line()
+
 ggplot(airquality, aes(x=Day, y=Temp)) + geom_line() + geom_point()
+
 ggplot(airquality, aes(x=Day, y=Temp)) + geom_line(color="green") + geom_point(size=3)
 
 # 빈도 막대 그래프
@@ -116,13 +119,15 @@ imsi + theme_classic()
 imsi + theme_void()
 
 
-ggplot(airquality, aes(x=Day, y=Temp, group=Day)) + geom_boxplot()
+ggplot(airquality, aes(x=Day, y=Temp, group=Day)) + geom_boxplot() # 박스플롯 그리는 예제
 ggplot(airquality, aes(Temp)) + geom_histogram()
 
 
 install.packages("xlsx")
-library(xlsx)
+library(xlsx) # 엑셀문서를 읽는 패키지이다.
 classDF <- read.xlsx("data/data.xlsx", 1, encoding="UTF-8")
+#'1' 번째 시트를 읽어오겠다 라는 뜻.
+
 str(classDF)
 View(classDF)
 
@@ -144,17 +149,23 @@ coSalesDF <- data.frame(company, year, sales)
 # 생성된 coSalesDF 확인
 coSalesDF
 str(coSalesDF)
+
 # 라인차트 생성 - x축은 연도(year), y축은 매출(sales) 매칭
 ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line()
+# 이번에는 데이터를 그룹화 하여 그려준다.
 ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(aes(group=company))
+
+
 # 선 색상 및 두께 설정
 ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company))
-ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company))+scale_colour_grey()
-ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company))+scale_colour_hue()
-ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company))+scale_colour_manual(values = c("orange", "green"))
+ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company))+scale_colour_grey() # 이런식으로 색을 지정해 줄 수도 있다.
+ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company))+scale_colour_hue() # 얘가 DEFAULT 이다.
+ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company))+scale_colour_manual(values = c("orange", "green")) # 색을 직접 지정.
+
 # 선의 종류 :  0 = blank, 1 = solid, 2 = dashed, 3 = dotted, 4 = dotdash, 5 = longdash, 6 = twodash
 ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company), linetype = 3)
 ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company,colour=company), linetype = "dotdash")
+
 # 점의 종류와 색상
 ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company, colour=company)) + geom_point(size=2, shape = 5)
 ggplot(coSalesDF, aes(x=year, y=sales)) + geom_line(size=2, aes(group=company, colour=company)) + geom_point(size=2, shape = '가')
@@ -167,7 +178,10 @@ ggplot(Cars93, aes(x=Weight, y=MPG.highway)) + geom_point(shape=21, size=6, colo
 ggplot(Cars93, aes(x=Weight, y=MPG.highway)) + geom_point(shape=21, size=6, fill="blue")  
 ggplot(Cars93, aes(x=Weight, y=MPG.highway)) + geom_point(shape=21, size=6, fill="blue", colour="pink") 
 ggplot(Cars93, aes(x=Weight, y=MPG.highway)) + geom_point(colour="grey", shape=21, size=6) 
-ggplot(Cars93, aes(x=Weight, y=MPG.highway, fill=Price)) + geom_point(colour="grey", shape=21, size=6) 
+
+# 가격별로 색이 그라데이션 되었다.
+ggplot(Cars93, aes(x=Weight, y=MPG.highway, fill=Price)) + geom_point(colour="grey", shape=21, size=6)  
+
 ggplot(Cars93, aes(x=Weight, y=MPG.highway)) + geom_point(colour="grey", shape=21, size=6, aes(fill=Price)) 
 ggplot(Cars93, aes(x=Weight, y=MPG.highway, fill=Cylinders)) +  geom_point(colour="grey", shape=21, size=6)
 ggplot(Cars93, aes(x=Weight, y=MPG.highway, fill=Cylinders)) +
@@ -188,15 +202,18 @@ w <- data.frame(year=c("2014", "2015", "2016", "2017", "2018"),
 ggplot(data=w, aes(x=year)) + geom_bar()
 ggplot(data=w, aes(x=year, y=weight)) + geom_bar() # 갯수를 세서 막대를 그리는게 기본이라..
 ggplot(data=w, aes(x=year, y=weight)) + geom_bar(stat="identity")
-ggplot(data=w, aes(x=year, y=weight)) + geom_bar(stat="identity") + coord_cartesian(ylim=c(60, 75))
-ggplot(data=w, aes(x=year, y=weight)) + geom_bar(stat="identity") + ylim(60, 75)
+ggplot(data=w, aes(x=year, y=weight)) + geom_bar(stat="identity") + coord_cartesian(ylim=c(60, 75)) # y축의 범위를 줌
+ggplot(data=w, aes(x=year, y=weight)) + geom_bar(stat="identity") + ylim(60, 75) # 이러면 또 안된다.
 ggplot(data=w, aes(x=year, y=weight)) + geom_bar(aes(fill=year), stat="identity") + coord_cartesian(ylim=c(60, 75))
 ggplot(data=w, aes(x=year, y=weight)) + geom_bar(aes(fill=year), colour="blue", stat="identity") + coord_cartesian(ylim=c(60, 75))
+
+#geom_label을 이용하여 라벨을 달아준다.
 ggplot(data=w, aes(x=year, y=weight)) + geom_bar(aes(fill=year), stat="identity") + geom_label(aes(label=weight))+coord_cartesian(ylim=c(60, 75))
+#y값에 따라 라벨의 위치가 바뀐다.
 ggplot(data=w, aes(x=year, y=weight)) + geom_bar(aes(fill=year), stat="identity") + geom_label(aes(label=weight), nudge_y=1)+coord_cartesian(ylim=c(60, 75))
 ggplot(data=w, aes(x=year, y=weight)) + geom_bar(aes(fill=year), stat="identity") + geom_label(aes(label=weight), nudge_y=2)+coord_cartesian(ylim=c(60, 75))
 ggplot(data=w, aes(x=year, y=weight)) + geom_bar(aes(fill=year), stat="identity") + geom_label(aes(label=weight), nudge_y=-1)+coord_cartesian(ylim=c(60, 75)) + labs(title = "테스트", subtitle="ggplot2 패키지를 이용한 시각화", x="년도", y="무게")
-
+ggsave("ggplot_test.png") # 저장해준다.
 
 
 # 트리맵 라이브러리 설치
