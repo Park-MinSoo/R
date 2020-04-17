@@ -257,18 +257,20 @@ ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point()
 ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point() + scale_color_manual(values = rainbow(15))
 ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point() + scale_color_manual(values = topo.colors(15))
 ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+geom_point() + scale_color_brewer(palette = 'Set3')
+
 #행 설정
 ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+
   geom_point()+guides(color = guide_legend(nrow = 6))
 
 #열 설정
+#2개의 범위로 나오는 (ncol = 2)
 ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+
   geom_point()+ scale_fill_brewer(palette="Reds")+ guides(color = guide_legend(ncol = 2)) 
 
-# 범례 항목들 역순으로
+# 범례 항목들 역순으로 guide_legend(reverse = TRUE)
 ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+
   geom_point()+guides(color = guide_legend(reverse = TRUE))
 
-# 범례 없애기
+# 범례 없애기 guides(color=F)
 ggplot(mpg, aes(x=displ, y=hwy,  color= manufacturer))+
   geom_point()+guides(color=F)
