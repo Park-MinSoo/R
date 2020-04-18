@@ -285,6 +285,8 @@ leaflet(wifi_data) %>%
   addCircles(lng = ~lon, lat = ~lat, popup = ~div) #div별로 팝업을 띄워라
 ?colorFactor
 telecom_color = colorFactor('Set1', wifi_data$div)
+telecom_color(wifi_data$div)
+#telecom_color는 리턴값이 함수이다.
 #Set1은 Rcolor의 setup중 하나이다.
 
 str(telecom_color)
