@@ -204,8 +204,7 @@ map_seoul <- get_map(location="seoul", zoom=11, maptype="roadmap")
 ggmap(map_seoul)+geom_point(data=df_add, aes(x=lon, y=lat), alpha=0.5, size=5, color="blue")
 # 997개의 데이터가 서울지도 위치에서는 찍혀질 수가 없어서 버려진 것이다.
 
-#leaflet 그리기
-
+#leaflet 그리기 ++ Leaflet은 인증키를 대입할 필요가 없다.
 install.packages("leaflet")
 library(leaflet)
 library(dplyr)
@@ -215,6 +214,7 @@ seoul_lonlat<-geocode("seoul")
 
 # 지도 배경 그리기 
 leaflet()
+#기본 지도 화면만 나타나게 된다.
 
 # 지도 배경에 타일깔기
 leaflet() %>% addTiles() 
@@ -228,33 +228,35 @@ map1 <- map0 %>% addTiles()
 map1
 
 mk <- multi_lonlat
-lan <- mk$lon
+lon <- mk$lon
 lat <- mk$lat
 msg <- '<strong><a href="http://www.multicampus.co.kr" style="text-decoration:none" >멀티캠퍼스</a></strong><hr>우리가 공부하는 곳 ㅎㅎ'
 map2 <- leaflet() %>% setView(lng = mk$lon, lat = mk$lat, zoom = 16) %>% addTiles() %>% 
-  addCircles(lng = lan, lat = lat, color='green', popup = msg )
+  addCircles(lng = lon, lat = lat, color='green', popup = msg )
 map2
 
 map2 <- leaflet() %>% setView(lng = mk$lon, lat = mk$lat, zoom = 18) %>% addTiles() %>% 
-  addCircles(lng = lan, lat = lat, color='green', popup = msg )
+  addCircles(lng = lon, lat = lat, color='green', popup = msg )
 map2
 
 map2 <- leaflet() %>% setView(lng = mk$lon, lat = mk$lat, zoom = 5) %>% addTiles() %>% 
-  addCircles(lng = lan, lat = lat, color='green', popup = msg )
+  addCircles(lng = lon, lat = lat, color='green', popup = msg )
 map2
 
 map2 <- leaflet() %>% setView(lng = mk$lon, lat = mk$lat, zoom = 1) %>% addTiles() %>% 
-  addCircles(lng = lan, lat = lat, color='green', popup = msg )
+  addCircles(lng = lon, lat = lat, color='green', popup = msg )
 map2
 
 
 content1 <- paste(sep = '<br/>',"<b><a href='https://www.seoul.go.kr/main/index.jsp'>서울시청</a></b>",'아름다운 서울','박원순 시장님 화이팅!!')
 map3<-leaflet() %>% addTiles() %>%  addPopups(126.97797, 37.56654, content1, options = popupOptions())
+# options = popupOptions() 를 설정하게 되면 지도를 띄울때 부터 팝업이 나타나게된다. + 한번 x 버튼을 누르면 다시는 못연다.
 map3
 
 content2 <- paste(sep = '<br/>',"<b><a href='http://www.snmb.mil.kr/mbshome/mbs/snmb/'>국립서울현충원</a></b>",'1955년에 개장', '2013년 ‘서울 미래유산’으로 등재')
 map3<-leaflet() %>% addTiles() %>%  addPopups(c(126.97797, 126.97797),  c(37.56654, 37.50124) , c(content1, content2), options = popupOptions(closeButton = FALSE) )
 map3
+# options = popupOptions(closeButton = FALSE)를 해주면 x버튼 누르는것이 사라지게된다.
 
 wifi_data = read.csv('data/wifi_data.csv', encoding = 'utf-8', stringsAsFactors = FALSE)
 View(wifi_data)
@@ -264,7 +266,7 @@ leaflet(wifi_data) %>%
           zoom = 11) %>% 
   addTiles() %>% 
   addCircles(lng = ~lon, lat = ~lat)
-
+#앞에서부터 넘어온 데이터는 ~를 해야 읽어 올 수 있다.
 
 leaflet(wifi_data) %>% 
   setView(lng = seoul_lonlat[1], lat = seoul_lonlat[2], zoom = 11) %>% 
@@ -280,9 +282,10 @@ leaflet(wifi_data) %>%
 leaflet(wifi_data) %>% 
   setView(lng = seoul_lonlat[1], lat = seoul_lonlat[2], zoom = 11) %>% 
   addProviderTiles('Stamen.Toner') %>% 
-  addCircles(lng = ~lon, lat = ~lat, popup = ~div)
+  addCircles(lng = ~lon, lat = ~lat, popup = ~div) #div별로 팝업을 띄워라
 ?colorFactor
 telecom_color = colorFactor('Set1', wifi_data$div)
+#Set1은 Rcolor의 setup중 하나이다.
 
 str(telecom_color)
 mode(telecom_color)
