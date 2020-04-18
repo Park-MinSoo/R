@@ -100,6 +100,8 @@ df <- data.frame(name=names,
                  lon=gc$lon,
                  lat=gc$lat)
 cen <- c(mean(df$lon),mean(df$lat))
+# zoom레벨에 따른 짤림 현상이 발생하게 될 수 있으므로 평균값을 중심지점으로 정하였다.
+
 map <- get_googlemap(center=cen,
                      maptype="roadmap",
                      zoom=10,
@@ -110,16 +112,14 @@ ggmap(map)
 ggmap(map) + geom_text(data=df,               
                        aes(x=lon,y=lat,colour="magenta"),               
                        size=3,                
-                       label=df$name) + guides(color=F)
-
-
+                       label=df$name) + guides(color=F) # 범례를 없애기 위해 guides를 없앴다.
 
 # 공공 DB 활용 
 
 install.packages("XML")
 library(XML)
 API_key  <- "%2BjzsSyNtwmcqxUsGnflvs3rW2oceFvhHR8AFkM3ao%2Fw50hwHXgGyPVutXw04uAXvrkoWgkoScvvhlH7jgD4%2FRQ%3D%3D"
-bus_No <- "360"
+bus_No <- "720"
 url <- paste("http://ws.bus.go.kr/api/rest/busRouteInfo/getBusRouteList?ServiceKey=", API_key, "&strSrch=", bus_No, sep="")
 doc <- xmlParse(url)
 top <- xmlRoot(doc) ; top
@@ -145,11 +145,15 @@ library(ggplot2)
 
 geocode('Seoul', source = 'google')
 geocode('Seoul', source = 'google', output = 'latlona')
+#output = 'latlona' 을 쓰면 서울과, 국적까지 출력해준다.
 geocode(enc2utf8('서울'), source = 'google')
 geocode(enc2utf8('서울'), source = 'google', output = 'latlona')
 geocode(enc2utf8('서울&language=ko'), source = 'google', output = 'latlona')
+#'서울&language=ko' 라고 주게되면 응답결과가 한글로 나오게 된다.
+
 
 #mutate_geocode(data.frame, address_column_name, source = 'google')
+#2호선 역이름
 station_list = c('시청역', '을지로입구역', '을지로3가역', '을지로4가역', 
                  '동대문역사문화공원역', '신당역', '상왕십리역', '왕십리역', '한양대역', 
                  '뚝섬역', '성수역', '건대입구역', '구의역', '강변역', '잠실나루역', 
@@ -160,14 +164,20 @@ station_list = c('시청역', '을지로입구역', '을지로3가역', '을지�
                  '홍대입구역', '신촌역', '이대역', '아현역', '충정로역')
 station_df = data.frame(station_list, stringsAsFactors = FALSE)
 station_df$station_list = enc2utf8(station_df$station_list)
+
 # 다음 행은 한번만 수행시키셩
 station_lonlat = mutate_geocode(station_df, station_list, source = 'google')
+#mutate_geocode는 첫번쨰 아규먼트로 데이터프레임을 주고 그곳에 두번째 아규먼트값(벡터)을 붙여주게 된다.
+
 station_lonlat
-save(station_lonlat, file="station_lonlat.rda")
+save(station_lonlat, file="station_lonlat.rda") #나중에 또 요청하지말고 보관을 해라, 확장자는 rda 혹은 rdata도 괜찮다.
 #load("station_lonlat.rda")
 
-seoul_lonlat = unlist(geocode('seoul', source = 'google'))
+seoul_lonlat = unlist(geocode('seoul', source = 'google')) 
+#unlist를 하게될경우 named 벡터가 되어 출력되게 된다.
+
 ?qmap
+# ggmap과 get_map을 합친것이 qmap이다.
 
 qmap('seoul', zoom = 11)
 qmap(seoul_lonlat, zoom = 11, source = 'stamen', maptype = 'toner')
@@ -181,8 +191,9 @@ seoul_map + geom_point(data = station_lonlat, aes(x = lon, y = lat), colour = 'g
 df <- read.csv("data/전국전기차충전소표준데이터.csv", stringsAsFactors=F)       
 str(df) 
 head(df)
-df_add <- df[,c(13, 17, 18)]
-names(df_add) <- c("address", "lat", "lon")
+View(df)
+df_add <- df[,c(13, 17, 18)] # 특정 행만 추출해서 새로 뽑아냄
+names(df_add) <- c("address", "lat", "lon") # 변수명들을 간단하게 바꾸어줌
 View(df_add)
 
 map_korea <- get_map(location="southKorea", zoom=7, maptype="roadmap") 
@@ -191,3 +202,4 @@ ggmap(map_korea)+geom_point(data=df_add, aes(x=lon, y=lat), alpha=0.5, size=2, c
 
 map_seoul <- get_map(location="seoul", zoom=11, maptype="roadmap")       
 ggmap(map_seoul)+geom_point(data=df_add, aes(x=lon, y=lat), alpha=0.5, size=5, color="blue")
+# 997개의 데이터가 서울지도 위치에서는 찍혀질 수가 없어서 버려진 것이다.
