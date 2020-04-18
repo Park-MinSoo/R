@@ -1,22 +1,31 @@
 library(ggplot2)
 p1 <- ggplot(data = iris, aes(x = Petal.Width, y= Petal.Length, col=Species)) + geom_point()
-p2 <- ggplot(data = iris, aes(x = Sepal.Width, y= Sepal.Length, col=Species)) + geom_point() 
+p2 <- ggplot(data = iris, aes(x = Sepal.Width, y= Sepal.Length, col=Species)) + geom_point()
+#이렇게 출력이 아니라 변수에 ggplot을 담아줄수도 있으며, 리스트 형식으로 들어가게 된다.
+
+install.packages("gridExtra")
 library(gridExtra)
 grid.arrange(p1, p2, nrow = 1)
-
+# 동시에 내보내겠다~~ 여기서 nrow는 출력할때 행의 갯수 (여기서는 1이므로 한 행에 다 출력하게 된다.)
+grid.arrange(p1, p2, p1, p2 , nrow = 2)
 
 # 지도 시각화
 install.packages("ggmap")
 library(ggmap)
 register_google(key='AIzaSyD8k2DWC_7yFHCrH6LDR3RfITsmWMEqC8c')
+#register_google 에 우리가 받은 key값을 준다.
 
+#여의도의 경도 & 위도 
 lon <- 126.9221322
 lat <- 37.5268831
 cen <- c(lon,lat)
 mk <- data.frame(lon=lon, lat=lat)
+# 마킹에 대한 정보는 반드시 데이터프레임 형태로 주어야한다.
+
 map <- get_googlemap(center=cen, maptype="roadmap",zoom=1, marker=mk)
-Sys.sleep(1)
-ggmap(map)
+#center라는 매개변수에는 백터형식의 값을, marker라는 매개변수에는 데이터프레임형식의 값을 집어 넣어주어야한다.
+Sys.sleep(1) # 서버로부터 지도가 실제로 오는데 시간이 걸리기 때문에 이렇게 1초정도 텀을 준다.
+ggmap(map) # 현재 zoom이 1 이여서 세계지도를 기준으로 보여지게 된다.
 map <- get_googlemap(center=cen, maptype="roadmap",zoom=5, marker=mk)
 Sys.sleep(1)
 ggmap(map)
@@ -27,16 +36,16 @@ map <- get_googlemap(center=cen, maptype="roadmap",zoom=15, marker=mk)
 Sys.sleep(1)
 ggmap(map)
 map <- get_googlemap(center=cen, maptype="satellite",zoom=16, marker=mk)
-Sys.sleep(1)
+Sys.sleep(1) # maptype="satellite" 은 위성사진
 ggmap(map)
 map <- get_googlemap(center=cen, maptype="terrain",zoom=8, marker=mk)
-Sys.sleep(1)
+Sys.sleep(1) # maptype="terrain" 은 지형도
 ggmap(map)
 map <- get_googlemap(center=cen, maptype="terrain",zoom=12, marker=mk)
 Sys.sleep(1)
 ggmap(map)
 map <- get_googlemap(center=cen, maptype="hybrid",zoom=16, marker=mk)
-Sys.sleep(1)
+Sys.sleep(1) # maptype="hybrid" 은 복합
 ggmap(map)+labs(title="테스트임", x="경도", y="위도")
 
 map <- get_map(location=cen, maptype="toner",zoom=12, marker=mk, source="google")
@@ -55,7 +64,7 @@ ggmap(map)
 #ggmap(map)
 
 
-mk <- geocode("seoul", source = "google")
+mk <- geocode("seoul", source = "google") # 구글한테 요청하여 지역의 위도 경도를 받아온다.
 print(mk)
 cen <- c(mk$lon, mk$lat)
 map <- get_googlemap(center=cen, maptype="roadmap",zoom=11, marker=mk)
@@ -67,14 +76,15 @@ ggmap(map)
 multi_lonlat <- geocode(enc2utf8("강남구 역삼동 테헤란로 212"), source = "google")
 mk <- multi_lonlat
 cen <- c(mk$lon, mk$lat)
-map <- get_googlemap(center=cen, maptype="roadmap",zoom=16)
+map <- get_googlemap(center=cen, maptype="roadmap",zoom=16) # 마커에대한 정보가 없기 때문에 마킹을 안해준다.
 ggmap(map) + 
-  geom_point(aes(x=mk$lon, y=mk$lat), alpha=0.4, size=5, color="pink") +
+  geom_point(aes(x=mk$lon, y=mk$lat), alpha=0.4, size=5, color="pink") + 
+  # aplpha 는 투명도 이다.
   geom_text(aes(x=mk$lon, y=mk$lat, label="우리가 공부하는 곳", vjust=0, hjust=0))
-
+  # vjust 와 hjust는 지정된 위치로 얼만큼 떨어져 있는가 이다.
+  # vjust는 상하, hjust는 좌우를 조정
 
 # 제주도
-
 names <- c("용두암","성산일출봉","정방폭포",
            "중문관광단지","한라산1100고지","차귀도")
 addr <- c("제주시 용두암길 15",
