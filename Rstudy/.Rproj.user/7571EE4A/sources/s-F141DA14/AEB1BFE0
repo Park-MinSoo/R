@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587190532689.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AEB1BFE0",
+    "lastKnownWriteTime" : 1587191148,
+    "last_content_update" : 1587191148718,
+    "path" : "C:/hardy/Rstudy/myhome_leaflet.R",
+    "project_path" : "myhome_leaflet.R",
+    "properties" : {
+        "cursorPosition" : "16,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
