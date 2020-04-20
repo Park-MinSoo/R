@@ -237,7 +237,7 @@ result3
 class(result3)
 ret1 <- dbFetch(result3, 1) 	
 ret1
-ret2 <- dbFetch(result3, 2)
+ret2 <- dbFetch(result3, 2) # 패치해온 만큼만 data.frame을 리턴해오게된다.
 ret2
 
 dbGetQuery(conn, "SELECT * FROM TAB")
@@ -267,12 +267,12 @@ dbRemoveTable(conn,"CARS")
 
 #######################다양한 DB 연동 예제들##################################
 # 예제 1
-df <- read.table("product_click.log",stringsAsFactors = F)
+df <- read.table("data/product_click.log",stringsAsFactors = F)
 head(df)
 str(df)
 names(df) <-c("click_time","pid")
 df$click_time <- as.character(df$click_time)
-dbWriteTable(conn,"productlog1",df)
+dbWriteTable(conn,"productlog",df)
 result4 <-dbReadTable(conn,"PRODUCTLOG")
 result4
 # 예제 2
