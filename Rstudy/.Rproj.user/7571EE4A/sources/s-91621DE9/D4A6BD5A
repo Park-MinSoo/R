@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587349501354.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D4A6BD5A",
+    "lastKnownWriteTime" : 2314885436531553075,
+    "last_content_update" : 1587349501354,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "0b2532735d8e41b297c884b80c8ebaf3",
+        "name" : "map7",
+        "title" : "map7"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587348721762.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BD8F65E8",
+    "lastKnownWriteTime" : 1587353797,
+    "last_content_update" : 1587353797682,
+    "path" : "C:/hardy/Rstudy/oneMap.R",
+    "project_path" : "oneMap.R",
+    "properties" : {
+        "cursorPosition" : "21,16",
+        "scrollLine" : "9",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
