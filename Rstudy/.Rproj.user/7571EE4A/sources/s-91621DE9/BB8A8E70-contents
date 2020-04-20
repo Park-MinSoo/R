@@ -214,13 +214,21 @@ install.packages("RJDBC");
 library(RJDBC)
 library(DBI)
 
-drv <- JDBC("oracle.jdbc.driver.OracleDriver","C:/unico/ojdbc6.jar")
+drv <- JDBC("oracle.jdbc.driver.OracleDriver","C:/hardy/ojdbc6.jar")
 conn <- dbConnect(drv,"jdbc:oracle:thin:@localhost:1521:xe","jdbctest","jdbctest")
-conn
-result1<-dbReadTable(conn,"VISITOR") # DB에서 table정보 dataframe으로 가져오기 - 테이블명 대문자!
+conn # 잘 나오면 db에 잘 connection이 된 것이다.
+dbListTables(conn)
+
+result1<-dbReadTable(conn,"VISITOR") # DB에서 table정보 dataframe으로 가져오기
 result1
-class(result1)
-mode(result1)
+class(result1) #class가 좀 더 직관적이다.
+mode(result1) #mode는 좀 더 광범위 하게 출력된다.
+
+result1<-dbReadTable(conn,"visitor") # 이제는 소문자도 상관없다.
+result1
+class(result1) 
+mode(result1) 
+
 result2 <- dbGetQuery(conn, "SELECT * FROM VISITOR")
 result2
 class(result2)

@@ -97,3 +97,13 @@ c(10,T)   ----> c(10,1)
     - 구문 분석  ->   연관어 추출, 검색/ 빈도
     - 의미 분석 -> 문자의 긍부정, 인사이트 추출
     - 담화 분석 -> 챗봇
+
+- oracle sql 백업
+
+- [ 계정의 모든 테이블 백업 ] - cmd 창을 수행시키고 오라클의 bin 디렉토리에서 수행
+
+  exp userid=jdbctest/jdbctest file=c:/unico/backup.bak
+
+  [ 복구]
+
+  imp userid=jdbctest/jdbctest file=c:/..../backup.bak full=y ignore=y

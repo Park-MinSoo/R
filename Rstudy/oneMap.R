@@ -12,7 +12,7 @@ View(k3@data)
 
 guname <- '강남구'
 gucode <- k2@data[k2@data$name == guname, "code.data"]
-pattern <- paste0('^', gucode)
+pattern <- paste0('^', gucode) # gucode로 시작하는것을 뽑아온다.
 ccco <- grep(pattern, k3@data$code.data) # 변수를 따로 담아주어야한다.
 k3@data[ccco,]
 
