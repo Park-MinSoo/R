@@ -107,3 +107,8 @@ c(10,T)   ----> c(10,1)
   [ 복구]
 
   imp userid=jdbctest/jdbctest file=c:/..../backup.bak full=y ignore=y
+
+## [ Rserve 경로]
+
+- C:\Program Files\R\R-3.6.3\bin\x64
+- Rserve --RS-encoding utf8
