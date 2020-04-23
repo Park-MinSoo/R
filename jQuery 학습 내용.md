@@ -22,4 +22,16 @@
   css({'css속성명':'css속성값','css속성명':'css속성값',...}) ---> setter
   ```
 
+
+
+- html(), text()
+
+  ```javascript
+  html() ---> innerHTML
+  text() ---> textContent
+  
+  html() ---> getter
+  html('태그문자열') ---> setter
+  ```
+
   
