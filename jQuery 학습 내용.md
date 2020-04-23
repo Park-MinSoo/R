@@ -32,6 +32,26 @@
   
   html() ---> getter
   html('태그문자열') ---> setter
+  html(함수) ---> setter
+  ```
+
+
+
+- avax()
+
+  ```javascript
+  jQuery.ajax()
+  $.ajax(), $.get(), $.post(), $.getJSON
+  $(....).load() // 응답이 텍스트나 HTML일때 딱 맞는다.
+  // default는 get이다.
+  ```
+
+
+
+- each()
+
+  ```javascript
+  $(...).each(함수)
   ```
 
   

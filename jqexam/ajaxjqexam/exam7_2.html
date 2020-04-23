@@ -7,7 +7,7 @@
 <script>
 $(document).ready(function() {
 	$("#loginb").click(	function() {
-		$.ajax("content/login.jsp", {		
+		$.ajax("content/login.jsp", {		// ajax로도 가능하다. 하지만 type과 dataType을 명시해 주어야한다.
 			type : "POST", 	
 			dataType : "json",
 			data : $("#loginf").serialize(),

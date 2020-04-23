@@ -8,7 +8,7 @@
 $(document).ready(function() {
 	$("#loginb").click(	function() {
 		alert($("#loginf").serialize());
-		$.post("content/login.jsp", $("#loginf").serialize(), function(data) {
+		$.post("content/login.jsp", $("#loginf").serialize(), function(data) {//post 방식 요청이다.
 			$.each(data, function(key, value) {
 				if (value == "ok") {
 					$("#result").text("로그인 성공!!").css("color", "Blue");
