@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587609869169.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "E5CBC5DA",
+    "lastKnownWriteTime" : 2434264979720,
+    "last_content_update" : 1587609869169,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "7C09BA71",
+        "caption" : "pdf",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=pdf&cache_key=7C09BA71",
+        "displayedObservations" : 746,
+        "environment" : "",
+        "expression" : "pdf",
+        "object" : "pdf",
+        "preview" : 0,
+        "totalObservations" : 746,
+        "variables" : 2
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

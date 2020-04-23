@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1587605860448.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "6E28023F",
+    "lastKnownWriteTime" : 1587614535,
+    "last_content_update" : 1587614535322,
+    "path" : "C:/hardy/Rstudy/JavaConnectNews.R",
+    "project_path" : "JavaConnectNews.R",
+    "properties" : {
+        "cursorPosition" : "16,43",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
